@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Deals</title>
+    <link rel="stylesheet" href="asset\style\onlineDeals.css">
+    <link rel="stylesheet" href="asset\style\navbar_footer.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src="asset\img\logo.png" alt="Logo">
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">Promotions</a>
+            <a href="#">Gifts & Vouchers</a>
+        </div>
+    </div>
+    <div class="div_body">
+        <div>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Movie Details</a></li>
+                <li><a href="#">Seat Selection</a></li>
+                <li>Online Deals</li>
+            </ul>
+        </div>
+
+        <?php
+        // Include your database connection code
+        include('db_connection.php');
+
+        // Include the save_data.php script for processing the form submission
+        include('save_data.php');
+
+        // Query the database to select the data from the 'online_deals' table.
+        $query = "SELECT id, name, price, description, image FROM online_deals";
+        $result = mysqli_query($connection, $query);
+
+        if (!$result) {
+            die("Query failed: " . mysqli_error($connection));
+        }
+
+        echo '<h2 class="onlineDeals_heading">Online Deals</h2>';
+        echo '<h4 class="onlineDeals_desc">Celebrate savings with our one-of-a-kind online deals, available exclusively on our platform. 
+        Enjoy unbeatable offers and unique products that you won\'t find elsewhere. Shop now for exclusive deals you won\'t want to miss!</h4>';
+
+        echo '<form method="post" action="save_data.php">';
+        echo '<div class="container">';
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="card">';
+            echo '<img src="asset/img/' . $row['image'] . '" alt="' . $row['name'] . '">';
+            echo '<h3 class="comboName">' . $row['name'] . ' - $' . $row['price'] . '</h3>';
+            echo '<p class="comboDesc">' . $row['description'] . '</p>';
+            echo '<br>';
+
+            echo '<select name="quantity[]" class="styled-select">';
+            echo '<option value="0">0</option>';
+            echo '<option value="1">1</option>';
+            echo '<option value="2">2</option>';
+            echo '<option value="3">3</option>';
+            echo '</select>';
+
+            echo '<br>';
+
+            echo '</div>';
+        }
+        echo '</div>';
+
+        echo '<div class="button-container">';
+        echo '<button type="button" id="go-back-button">Go back to seat selection</button>';
+        echo '<button type="submit" name="submit">Next</button>';
+        echo '</div>';
+        echo '</form>';
+
+        // Close the database connection
+        mysqli_close($connection);
+        ?>
+    </div>
+
+    <script>
+        // JavaScript to clear the selected options and cart session when the "Go back" button is clicked
+        document.getElementById('go-back-button').addEventListener('click', function() {
+            const selects = document.querySelectorAll('select[name="quantity[]"]');
+            selects.forEach(select => {
+                select.selectedIndex = 0; // Reset the selected index to 0 (the first option)
+            });
+
+            // Clear the cart session
+            <?php
+            session_start(); // Start the session (if not already started)
+            if (isset($_SESSION['cart'])) {
+                unset($_SESSION['cart']); // Unset or remove the cart session
+            }
+            ?>
+        });
+    </script>
+
+
+
+</body>
+
+</html>
