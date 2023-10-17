@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------- Breadcrumb */
+ul.breadcrumb {
+    /* padding: 10px 16px; */
+    list-style: none;
+    color: white;
+    /* background-color: #eee; */
+    margin: 10px 0 30px 0;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #b1b1b1;
+    text-decoration: none;
+    pointer-events: none; /* Prevent the link from being clickable */
+    text-decoration: none; /* Remove the underline */
+    color: gray; /* Change the color to indicate it's disabled */
+    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+}
+
+ul.breadcrumb li a:hover {
+    color: #8b8b8b;
+    /* background-color: red; */
+}
+
+/* ---------------------------------------- Payment heading & desc */
+.payment_heading,
+.payment_desc {
+    margin: 10px 0 20px 0;
+    display: block;
+    color: white;
+}
+
+/* ---------------------------------------- Form */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 2px;
+}
+
+.grid-container-item {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 2px;
+}
+
+.item2 {
+    background-color: #e9e9e5;
+    border: 1px solid black
+}
+
+#movieDetails{
+    padding: 12px;
+}
+
+.error {
+    color: red;
+    display: none;
+}
+
+#paymentForm {
+    padding: 12px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border: 1px solid #007bff;
+}
+
+#creditcard-img {
+    width: 70px; /* Adjust the desired width */
+    height: auto; /* Maintain aspect ratio */
+    border: none; 
+  }
+
+.expiry-container {
+    display: flex;
+}
+
+.expiry-container input {
+    flex: 1;
+}
+
+.expiry-separator {
+    margin: 0 5px;
+    line-height: 35px;
+    vertical-align: middle;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .button-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Style for the "Back" button */
+  #backButton {
+    background-color: #ccc;
+    color: #333;
+  }
+
+  #backButton:hover {
+    background-color: #999;
+  }
