@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------- Breadcrumb */
+ul.breadcrumb {
+    /* padding: 10px 16px; */
+    list-style: none;
+    color: white;
+    /* background-color: #eee; */
+    margin: 10px 0 30px 0;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #b1b1b1;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #8b8b8b;
+    /* background-color: red; */
+}
+
+/* ---------------------------------------- Card */
+.gift_heading, .gift_desc {
+    margin: 10px 0 20px 0;
+    display: block;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    padding: 20px; 
+}
+
+.card {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 45%;
+    height: 250px;
+    /* height: auto; */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.giftName, .giftDesc{
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
