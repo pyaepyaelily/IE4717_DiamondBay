@@ -55,17 +55,41 @@
 
             echo '</div>';
         }
+        echo '</div>';
 
-        mysqli_data_seek($result, 0);
+
+        echo '<br>';
+        // Query the database to select the data from the 'corporate' table.
+        $query1 = "SELECT * FROM corporate";
+        $result1 = mysqli_query($connection, $query1); // Use $result1 for the second query
+
+        if (!$result1) {
+            die("Query failed: " . mysqli_error($connection));
+        }
+
+        echo '<h2 class="gifts_heading">Corporate Vouchers</h2>';
+        echo '<h4 class="gifts_desc">The perfect gift to celebrate a special occasion or just to brighten someone’s day. Valid for purchase at Diamond Bay box office only.</h4>';
+
+        echo '<div class="container">';
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            echo '<div class="card">';
+            echo '<img src="asset/img/' . $row1['image'] . '" alt="' . $row1['image'] . '">';
+            echo '<h3 class="giftName">' . $row1['name'] . '</h3>';
+            echo '<p class="giftDesc">' . $row1['description'] . '</p>';
+            echo '<br>';
+            echo '<br>';
+            echo '</div>';
+        }
+        mysqli_data_seek($result1, 0);
 
         // Fetch the "Voucher Type" data using a new array
         $voucherTypes = array();
-        while ($row = mysqli_fetch_assoc($result)) {
-            $voucherTypes[] = $row['name'];
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $voucherTypes[] = $row1['name'];
         }
-
-
         echo '</div>';
+
+
 
         echo '<br>';
         echo '<h2 class="gifts_heading">Corporate Vouchers Enquiry</h2>';
@@ -75,82 +99,82 @@
         echo '<br>';
 
         echo '<form id="enquiryForm" method="post" action="submit_enquiry.php">';
-            echo '<div class="form-group">';
-                echo '    <label for="voucherType">Voucher Type*</label>';
-                echo '    <select id="voucherType" name="voucherType" required>';
-                foreach ($voucherTypes as $type) {
-                    echo '        <option value="' . $type . '">' . $type . '</option>';
-                }
-                echo '    </select>';
-                echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="voucherType">Voucher Type*</label>';
+        echo '    <select id="voucherType" name="voucherType" required>';
+        foreach ($voucherTypes as $type) {
+            echo '        <option value="' . $type . '">' . $type . '</option>';
+        }
+        echo '    </select>';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-                echo '    <label for="quantity">Quantity*</label>';
-                echo '    <input type="number" id="quantity" name="quantity" required min="10" max="1000" value="10">';
-                echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="quantity">Quantity*</label>';
+        echo '    <input type="number" id="quantity" name="quantity" required min="10" max="1000" value="10">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="comment">Additonal Requirement / Comment</label>';
-            echo '    <textarea id="comment" name="comment" rows="4" cols="50"></textarea>';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="comment">Additonal Requirement / Comment</label>';
+        echo '    <textarea id="comment" name="comment" rows="4" cols="50"></textarea>';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="title">Title*</label>';
-            echo '    <select id="title" name="title" required>';
-            echo '        <option value="Mr">Mr</option>';
-            echo '        <option value="Mrs">Mrs</option>';
-            echo '        <option value="Miss">Miss</option>';
-            echo '        <option value="Ms">Ms</option>';
-            echo '    </select>';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="title">Title*</label>';
+        echo '    <select id="title" name="title" required>';
+        echo '        <option value="Mr">Mr</option>';
+        echo '        <option value="Mrs">Mrs</option>';
+        echo '        <option value="Miss">Miss</option>';
+        echo '        <option value="Ms">Ms</option>';
+        echo '    </select>';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="name">Name*</label>';
-            echo '    <input type="text" id="name" name="name" required pattern="[A-Za-z ]+">';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="name">Name*</label>';
+        echo '    <input type="text" id="name" name="name" required pattern="[A-Za-z ]+">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="contactNumber">Contact Number*</label>';
-            echo '    <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10}">';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="contactNumber">Contact Number*</label>';
+        echo '    <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10}">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="email">Email*</label>';
-            echo '    <input type="email" id="email" name="email" required>';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="email">Email*</label>';
+        echo '    <input type="email" id="email" name="email" required>';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="name">Company</label>';
-            echo '    <input type="text" id="company" name="company">';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="name">Company</label>';
+        echo '    <input type="text" id="company" name="company">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="name">Address</label>';
-            echo '    <input type="text" id="address" name="address">';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="name">Address</label>';
+        echo '    <input type="text" id="address" name="address">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '<div class="form-group">';
-            echo '    <label for="name">Postal Code</label>';
-            echo '    <input type="text" id="postalCode" name="postalCode">';
-            echo '    <br>';
-            echo '</div>';
+        echo '<div class="form-group">';
+        echo '    <label for="name">Postal Code</label>';
+        echo '    <input type="text" id="postalCode" name="postalCode">';
+        echo '    <br>';
+        echo '</div>';
 
-            echo '    <p>* Denotes mandatory fields</p>';
-            echo '    <br>';
+        echo '    <p>* Denotes mandatory fields</p>';
+        echo '    <br>';
 
-            echo '<div class="button-container">';
-            echo '<button type="button" id="clear-button">Clear</button>';
-            echo '<button type="submit" name="submit">Submit</button>';
-            echo '</div>';
+        echo '<div class="button-container">';
+        echo '<button type="button" id="clear-button">Clear</button>';
+        echo '<button type="submit" name="submit">Submit</button>';
+        echo '</div>';
         echo '</form>';
 
 
@@ -162,17 +186,17 @@
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // JavaScript to clear the form fields when the "Clear" button is clicked
-        document.getElementById('clear-button').addEventListener('click', function() {
-            // Get the form element
-            const form = document.getElementById('enquiryForm');
+        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript to clear the form fields when the "Clear" button is clicked
+            document.getElementById('clear-button').addEventListener('click', function() {
+                // Get the form element
+                const form = document.getElementById('enquiryForm');
 
-            // Reset the form to its initial state (clear all input values and selections)
-            form.reset();
+                // Reset the form to its initial state (clear all input values and selections)
+                form.reset();
+            });
         });
-    });
-</script>
+    </script>
 
 
 
