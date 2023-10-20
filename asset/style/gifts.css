@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    color: white;
+}
+
 /* ---------------------------------------- Breadcrumb */
 ul.breadcrumb {
     /* padding: 10px 16px; */
