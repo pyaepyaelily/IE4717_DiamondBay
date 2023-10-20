@@ -16,7 +16,7 @@
         <div class="navbar-links">
             <a href="#">Home</a>
             <a href="#">Promotions</a>
-            <a href="#">Gifts & Vouchers</a>
+            <a href="gift.php">Gifts & Vouchers</a>
         </div>
     </div>
     <div class="div_body">
