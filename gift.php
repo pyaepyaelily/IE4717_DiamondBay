@@ -31,7 +31,7 @@
         // Include your database connection code
         include('db_connection.php');
 
-       
+
         // Query the database to select the data from the 'gifts' table.
         $query = "SELECT id, name, description, image FROM gifts";
         $result = mysqli_query($connection, $query);
@@ -94,7 +94,17 @@
         });
     </script>
 
-
+    <footer>
+        <div class="footer-row">
+            <p>Supported Payment</p>
+        </div>
+        <div class="footer-row">
+            <img src="asset\img\visa-mastercard-logos.jpg" alt="Supported Payment">
+        </div>
+        <div class="footer-row">
+            <p>&copy; 2023 Diamond Bay</p>
+        </div>
+    </footer>
 
 </body>
 

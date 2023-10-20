@@ -100,6 +100,17 @@
         });
     </script>
 
+    <footer>
+        <div class="footer-row">
+            <p>Supported Payment</p>
+        </div>
+        <div class="footer-row">
+            <img src="asset\img\visa-mastercard-logos.jpg" alt="Supported Payment">
+        </div>
+        <div class="footer-row">
+            <p>&copy; 2023 Diamond Bay</p>
+        </div>
+    </footer>
 
 
 </body>

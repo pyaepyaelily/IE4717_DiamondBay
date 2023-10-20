@@ -106,7 +106,7 @@
         echo '          <input type="text" id="expiryMonth" name="expiryMonth" placeholder="MM" required>';
         echo '          <span class="expiry-separator">/</span>';
         echo '          <input type="text" id="expiryYear" name="expiryYear" placeholder="YYYY" required>';
-       echo '       </div>';
+        echo '       </div>';
         echo '    <br>';
 
         echo '    <label for="nameOnCard">Name on Card *</label>';
@@ -152,7 +152,17 @@
         });
     </script>
 
-
+    <footer>
+        <div class="footer-row">
+            <p>Supported Payment</p>
+        </div>
+        <div class="footer-row">
+            <img src="asset\img\visa-mastercard-logos.jpg" alt="Supported Payment">
+        </div>
+        <div class="footer-row">
+            <p>&copy; 2023 Diamond Bay</p>
+        </div>
+    </footer>
 
 </body>
 

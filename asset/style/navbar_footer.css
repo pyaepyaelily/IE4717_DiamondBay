@@ -2,8 +2,8 @@ body {
     background-color: #2b2b2b;
 }
 
-.div_body{
-    margin: 0 40px 0 40px;
+.div_body {
+    margin: 0 40px 100px 40px;
 }
 
 /* ---------------------------------------- Navbar */
@@ -38,4 +38,23 @@ body {
     background-color: #555;
 }
 
+/* ---------------------------------------- Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
 
+.footer-row {
+    margin: 10px;
+}
+
+.footer-row img {
+    width: 50px;
+    height: 30px;
+    margin: 0 10px;
+}
