@@ -35,7 +35,8 @@ ul.breadcrumb li a:hover {
 }
 
 /* ---------------------------------------- Card */
-.gift_heading, .gift_desc {
+.gift_heading,
+.gift_desc {
     margin: 10px 0 20px 0;
     display: block;
     color: white;
@@ -43,9 +44,9 @@ ul.breadcrumb li a:hover {
 
 .container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px; 
+    padding: 20px;
 }
 
 .card {
@@ -63,6 +64,12 @@ img {
     /* height: auto; */
 }
 
+.giftName,
+.giftDesc {
+    color: white;
+}
+
+/* ---------------------------------------- Form */
 button {
     padding: 10px 20px;
     background-color: #007BFF;
@@ -75,12 +82,35 @@ button:hover {
     background-color: #0056b3;
 }
 
-.giftName, .giftDesc{
-    color: white;
-}
-
 .button-container {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    flex: 0 0 20%; /* Adjust the width as needed */
+    font-weight: bold;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+    flex: 0 0 20%; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+

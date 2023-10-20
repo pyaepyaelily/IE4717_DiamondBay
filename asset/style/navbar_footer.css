@@ -40,7 +40,7 @@ body {
 
 /* ---------------------------------------- Footer */
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
     background-color: #333;
@@ -54,7 +54,7 @@ footer {
 }
 
 .footer-row img {
-    width: 50px;
+    width: 60px;
     height: 30px;
     margin: 0 10px;
 }
