@@ -186,7 +186,68 @@
         // Close the database connection
         mysqli_close($connection);
         ?>
+
+        <!-- <div id="popup" style="display: none;">
+            <p id="popup-message" style="color: black;">Thank you for your submission! Your enquiry has been sent successfully.</p>
+            <button id="close-popup">Close</button>
+        </div> -->
+
+        <div id="popup" style="display: none;">
+            <p id="popup-message" style="color: black;"></p>
+            <button id="close-popup">Close</button>
+        </div>
+
+
+
     </div>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successParam = new URLSearchParams(window.location.search).get('success');
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('close-popup');
+            const form = document.getElementById('enquiryForm');
+
+            if (successParam === '1') {
+                // Display the popup if the success query parameter is present
+                popup.style.display = 'block';
+                form.reset();
+            }
+
+            closePopup.addEventListener('click', function() {
+                // Close the popup when the close button is clicked
+                popup.style.display = 'none';
+            });
+        });
+    </script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successParam = new URLSearchParams(window.location.search).get('success');
+            const errorParam = new URLSearchParams(window.location.search).get('error');
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('close-popup');
+            const form = document.getElementById('enquiryForm');
+            const popupMessage = document.getElementById('popup-message');
+
+            if (successParam === '1') {
+                // Display the success message if the success query parameter is present
+                popupMessage.textContent = 'Thank you for your submission! Your enquiry has been sent successfully.';
+                popup.style.display = 'block';
+                form.reset();
+            } else if (errorParam === '1') {
+                // Display the error message if the error query parameter is present
+                popupMessage.textContent = 'Sorry, there was an error processing your enquiry. Please check your inputs and try again.';
+                popup.style.display = 'block';
+            }
+
+            closePopup.addEventListener('click', function() {
+                // Close the popup when the close button is clicked
+                popup.style.display = 'none';
+            });
+        });
+    </script>
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

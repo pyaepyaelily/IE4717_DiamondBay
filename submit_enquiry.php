@@ -46,10 +46,12 @@ if (isset($_POST['submit'])) {
 
     // Send the email with the additional headers
     if (mail($recipientEmail, $subject, $message, $additionalHeaders)) {
-        echo 'Email sent successfully!';
+        header('Location: gift.php?success=1');
+        exit();
     } else {
-        echo 'Email delivery failed.';
+        // Form processing failed, show an error message and redirect with an error query parameter
+        header('Location: gift.php?error=1');
+        exit();
     }
 }
 }
-?>
