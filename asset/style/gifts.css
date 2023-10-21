@@ -55,17 +55,15 @@ ul.breadcrumb li a:hover {
 
 .card {
     flex: 1;
-    border: 1px solid #ccc;
-    padding: 20px;
+    padding: 2px;
     margin: 0 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 img {
-    max-width: 45%;
-    height: 250px;
-    /* height: auto; */
+    max-width: 40%;
+    height: auto;
 }
 
 .giftName,

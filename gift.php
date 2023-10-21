@@ -68,14 +68,14 @@
         }
 
         echo '<h2 class="gifts_heading">Corporate Vouchers</h2>';
-        echo '<h4 class="gifts_desc">The perfect gift to celebrate a special occasion or just to brighten someone’s day. Valid for purchase at Diamond Bay box office only.</h4>';
+        echo '<h4 class="gifts_desc">The ideal gift for marking special occasions or brightening someone’s day, these corporate vouchers are exclusively redeemable at Diamond Bay’s box office.</h4>';
 
         echo '<div class="container">';
         while ($row1 = mysqli_fetch_assoc($result1)) {
             echo '<div class="card">';
             echo '<img src="asset/img/' . $row1['image'] . '" alt="' . $row1['image'] . '">';
             echo '<h3 class="giftName">' . $row1['name'] . '</h3>';
-            echo '<p class="giftDesc">' . $row1['description'] . '</p>';
+            echo '<h3 class="giftName">$' . $row1['price'] . '</h3>';
             echo '<br>';
             echo '<br>';
             echo '</div>';
@@ -140,7 +140,7 @@
 
         echo '<div class="form-group">';
         echo '    <label for="contactNumber">Contact Number*</label>';
-        echo '    <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10}">';
+        echo '    <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{8}">';
         echo '    <br>';
         echo '</div>';
 
