@@ -33,7 +33,7 @@
 
 
         // Query the database to select the data from the 'gifts' table.
-        $query = "SELECT id, name, description, image FROM gifts";
+        $query = "SELECT * FROM gifts WHERE type = 'gift' ";
         $result = mysqli_query($connection, $query);
 
         if (!$result) {
@@ -46,13 +46,13 @@
         echo '<div class="container">';
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="card">';
+            echo '<a href="gift_detail.php?id=' . $row['id'] . '">';
             echo '<img src="asset/img/' . $row['image'] . '" alt="' . $row['image'] . '">';
             echo '<h3 class="giftName">' . $row['name'] . '</h3>';
             echo '<p class="giftDesc">' . $row['description'] . '</p>';
+            echo '</a>';
             echo '<br>';
-
             echo '<br>';
-
             echo '</div>';
         }
         echo '</div>';
@@ -60,7 +60,8 @@
 
         echo '<br>';
         // Query the database to select the data from the 'corporate' table.
-        $query1 = "SELECT * FROM corporate";
+        // $query1 = "SELECT * FROM corporate";
+        $query1 = "SELECT * FROM gifts WHERE type = 'corporate' ";
         $result1 = mysqli_query($connection, $query1); // Use $result1 for the second query
 
         if (!$result1) {
@@ -73,9 +74,11 @@
         echo '<div class="container">';
         while ($row1 = mysqli_fetch_assoc($result1)) {
             echo '<div class="card">';
+            echo '<a href="gift_detail.php?id=' . $row1['id'] . '">';
             echo '<img src="asset/img/' . $row1['image'] . '" alt="' . $row1['image'] . '">';
             echo '<h3 class="giftName">' . $row1['name'] . '</h3>';
-            echo '<h3 class="giftName">$' . $row1['price'] . '</h3>';
+            echo '<p class="giftName">' . $row1['description'] . '</p>';
+            echo '</a>';
             echo '<br>';
             echo '<br>';
             echo '</div>';
@@ -198,25 +201,6 @@
         });
     </script>
 
-
-
-    <script>
-        // JavaScript to clear the selected options and cart session when the "Go back" button is clicked
-        document.getElementById('go-back-button').addEventListener('click', function() {
-            const selects = document.querySelectorAll('select[name="quantity[]"]');
-            selects.forEach(select => {
-                select.selectedIndex = 0; // Reset the selected index to 0 (the first option)
-            });
-
-            // Clear the cart session
-            <?php
-            session_start(); // Start the session (if not already started)
-            if (isset($_SESSION['cart'])) {
-                unset($_SESSION['cart']); // Unset or remove the cart session
-            }
-            ?>
-        });
-    </script>
 
     <footer>
         <div class="footer-row">

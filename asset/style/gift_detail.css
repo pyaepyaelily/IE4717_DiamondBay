@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* ---------------------------------------- Breadcrumb */
+ul.breadcrumb {
+    /* padding: 10px 16px; */
+    list-style: none;
+    color: white;
+    /* background-color: #eee; */
+    margin: 10px 0 30px 0;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #b1b1b1;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #8b8b8b;
+}
+
+/* ---------------------------------------- Columns */
+/* Additional CSS for two-column layout */
+.detail-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; /* Add padding to both columns */
+}
+
+.detail-container .left-column {
+    flex: 1; /* Adjust the flex value for the left column to give it less space */
+    padding-right: 20px; /* Adjust the spacing by changing the value */
+}
+
+.detail-container .right-column {
+    flex: 4; /* Adjust the flex value for the right column to give it more space */
+    padding-left: 10px; /* Adjust the spacing by changing the value */
+}
+
+/* ---------------------------------------- Left column */
+img {
+    max-width: 60%;
+    height: auto;
+}
+
+/* ---------------------------------------- Right column */
+.right-column ul {
+    list-style: disc; /* Use disc style bullets */
+    padding-left: 20px; /* Adjust the left padding to control spacing */
+}
+
+.right-column ul li {
+    margin-bottom: 10px; /* Add margin between list items */
+}
