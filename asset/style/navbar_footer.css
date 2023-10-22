@@ -1,10 +1,20 @@
 body {
     color: white;
     background-color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page covers at least the full viewport height */
+    margin: 0;
 }
 
 .div_body {
     margin: 0 40px 100px 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* ---------------------------------------- Navbar */
@@ -48,6 +58,8 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px;
+
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 .footer-row {
