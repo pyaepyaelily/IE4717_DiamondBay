@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* ---------------------------------------- Breadcrumb */
 ul.breadcrumb {
     /* padding: 10px 16px; */
@@ -46,21 +40,26 @@ ul.breadcrumb li a:hover {
     color: white;
 }
 
-/* ---------------------------------------- Form */
-.grid-container {
+/* ---------------------------------------- Movie Details */
+.grid-container-item {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 2px;
+    /* background-color: red; */
 }
 
-.grid-container-item {
+/* ---------------------------------------- Form */
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    /* grid-template-columns: 1fr 2fr 1fr; */
+    grid-template-columns: 2fr 1.5fr 2fr;
     grid-gap: 2px;
+    /* background-color: aqua; */
 }
 
 .item2 {
     background-color: #e9e9e5;
+    /* background-color: #ffff05; */
     border: 1px solid black
 }
 
@@ -69,12 +68,18 @@ ul.breadcrumb li a:hover {
 }
 
 .error {
-    color: red;
     display: none;
+    color: red;
+}
+
+.error-name, .error-card-number, .error-cvv {
+    display: none;
+    color: red;
 }
 
 #paymentForm {
     padding: 12px;
+    color: rgb(255, 255, 255);
 }
 
 input[type="text"],

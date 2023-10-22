@@ -6,6 +6,8 @@
     <title>Online Deals</title>
     <link rel="stylesheet" href="asset\style\payment.css">
     <link rel="stylesheet" href="asset\style\navbar_footer.css">
+    <script src="asset\js\card_validation.js"></script>
+
 </head>
 
 <body>
@@ -37,51 +39,70 @@
         // Include the save_data.php script for processing the form submission
         include('save_data.php');
 
+        session_start();
 
+        echo '<h2 class="payment_heading">Payment</h2>';
+        echo '<h4 class="payment_desc">At Diamond Bay, we are committed to providing you with the best online shopping experience. Our secure payment process ensures that your personal and financial information is kept safe and confidential.</h4>';
 
-        echo '<div class="grid-container-item">';
+        echo '<br>';
+
+        echo '<div class="grid-container-item" >';
         echo '  <div class="item1"></div>';
-        echo '  <div class="item2" id="movieDetails">';
-        echo '      <table style="width:100%">';
-        echo '          <tr>';
-        echo '              <td>Image</td>';
-        echo '              <td>';
-        echo '                  <table>';
-        echo '                      <tr>';
-        echo '                          <td>Movie Title</td>';
-        echo '                      </tr>';
-        echo '                      <tr>';
-        echo '                          <td>Hall</td>';
-        echo '                      </tr>';
-        echo '                      <tr>';
-        echo '                          <td>Date</td>';
-        echo '                      </tr>';
-        echo '                      <tr>';
-        echo '                          <td>Time</td>';
-        echo '                      </tr>';
-        echo '                   </table>';
-        echo '              </td>';
-        echo '          </tr>';
-        echo '          <tr>';
-        echo '              <td>Seats</td>';
-        echo '              <td>Tobias</td>';
-        echo '              <td>Tobias</td>';
-        echo '              <td>Tobias</td>';
-        echo '          </tr>';
-        echo '          <tr>';
-        echo '              <td>Online Deals</td>';
-        echo '              <td>14</td>';
-        echo '              <td>16</td>';
-        echo '              <td>14</td>';
-        echo '          </tr>';
-        echo '          <tr>';
-        echo '              <td>Payment</td>';
-        echo '              <td></td>';
-        echo '              <td></td>';
-        echo '              <td>Linus</td>';
-        echo '          </tr>';
-        echo '      </table>';
-        echo '  </div>';
+        echo '  <div class="item2" id="movieDetails" style="color:black;">';
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+
+            echo '      <table style="width:100%">';
+            echo '          <tr>';
+            echo '              <td>Image</td>';
+            echo '              <td>';
+            echo '                  <table>';
+            echo '                      <tr>';
+            echo '                          <td>Movie Title</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Hall</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Date</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Time</td>';
+            echo '                      </tr>';
+            echo '                   </table>';
+            echo '              </td>';
+            echo '          </tr>';
+            echo '          <tr>';
+            echo '              <td>Seats</td>';
+            echo '              <td>Tobias</td>';
+            echo '              <td>Tobias</td>';
+            echo '              <td>Tobias</td>';
+            echo '          </tr>';
+            echo '   <tr> ';
+            echo '      <td> Online Deals</td> ';
+            echo '      <td></td> ';
+            echo '      <td></td> ';
+            echo '      <td></td> ';
+            echo '   </tr> ';
+            foreach ($cart as $item) {
+                echo '<tr>';
+                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td>' . $item['name'] . '</td>';
+                echo '<td>' . $item['quantity'] . '</td>';
+                echo '<td>$' . $item['price'] . '</td>';
+                echo '</tr>';
+            }
+            echo '          <tr>';
+            echo '              <td>Payment</td>';
+            echo '              <td></td>';
+            echo '              <td></td>';
+            echo '              <td>Linus</td>';
+            echo '          </tr>';
+            echo '      </table>';
+            echo '  </div>';
+        } else {
+            echo '<p>No items in the cart.</p>';
+        }
         echo '  <div class="item3"></div>';
         echo '</div>';
 
@@ -90,12 +111,14 @@
         // Payment form
         echo '<div class="grid-container">';
         echo '  <div class="item1"></div>';
-        echo '  <div class="item2">';
+        echo '  <div class="item2_payment">';
 
-        echo '  <form id="paymentForm" action="submit.php" method="post">';
+        echo '  <form id="paymentForm" action="thankyou.php" method="post" >';
         echo '    <label for="cardNumber">Card Number *</label>';
         echo '    <br>';
-        echo '    <input type="text" id="cardNumber" name="cardNumber" required>';
+        echo '   <input type="text" id="cardNumber" name="cardNumber" required pattern="\d{16}"> ';
+        echo '    <br>';
+        // echo ' <span class="error" id="error-card-number">Invalid card number. Please enter a 16-digit number.</span> ';
         echo '    <br>';
         echo '    <img id="creditcard-img" src="asset\img\visa-mastercard-logos.jpg" alt="Credit Card Image">';
         echo '    <p style="font-size: 10px" >Accepted card types</p>';
@@ -103,22 +126,26 @@
 
         echo '    <label for="expiryDate">Expiry Date *</label>';
         echo '      <div class="expiry-container">';
-        echo '          <input type="text" id="expiryMonth" name="expiryMonth" placeholder="MM" required>';
+        echo '          <input type="text" id="expiryMonth" name="expiryMonth" required>';
         echo '          <span class="expiry-separator">/</span>';
-        echo '          <input type="text" id="expiryYear" name="expiryYear" placeholder="YYYY" required>';
+        echo '          <input type="text" id="expiryYear" name="expiryYear" required>';
         echo '       </div>';
         echo '    <br>';
 
         echo '    <label for="nameOnCard">Name on Card *</label>';
-        echo '    <input type="text" id="nameOnCard" name="nameOnCard" required pattern="[A-Za-z ]+">';
+        echo '    <input type="text" id="nameOnCard" name="nameOnCard" required> ';
         echo '    <br>';
-        echo '    <span class="error">Name should contain only letters and spaces.</span>';
+        // echo '    <span class="error-name">Name should contain only letters and spaces.</span>';
+        echo '    <br>';
         echo '    <br>';
 
         echo '    <label for="cvv">Card Security Code (CVV) *</label>';
         echo '    <input type="text" id="cvv" name="cvv" required>';
         echo '    <br>';
+        // echo ' <span class="error-cvv">Invalid CVV. Please enter a 3-digit number.</span> ';
         echo '    <br>';
+        echo '    <br>';
+
         echo '    <label for="email">Email *</label>';
         echo '    <input type="email" id="email" name="email" required>';
         echo '    <br>';
@@ -140,17 +167,6 @@
         ?>
     </div>
 
-    <script>
-        const nameOnCard = document.getElementById("nameOnCard");
-        const errorSpan = document.querySelector(".error");
-        nameOnCard.addEventListener("input", function() {
-            if (!/^[A-Za-z ]+$/.test(nameOnCard.value)) {
-                errorSpan.style.display = "inline";
-            } else {
-                errorSpan.style.display = "none";
-            }
-        });
-    </script>
 
     <footer>
         <div class="footer-row">

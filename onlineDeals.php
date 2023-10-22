@@ -56,6 +56,9 @@
             echo '<img src="asset/img/' . $row['image'] . '" alt="' . $row['name'] . '">';
             echo '<h3 class="comboName">' . $row['name'] . ' - $' . $row['price'] . '</h3>';
             echo '<p class="comboDesc">' . $row['description'] . '</p>';
+            echo '<input type="hidden" name="id[]" value="' . $row['id'] . '">';
+            echo '<input type="hidden" name="product_name[]" value="' . $row['name'] . '">';
+            echo '<input type="hidden" name="price[]" value="' . $row['price'] . '">';
             echo '<br>';
 
             echo '<select name="quantity[]" class="styled-select">';

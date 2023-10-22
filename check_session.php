@@ -5,6 +5,7 @@ if (isset($_SESSION['cart'])) {
     $cartItems = $_SESSION['cart'];
     
     foreach ($cartItems as $item) {
+        echo 'ID: ' . $item['id'] . '<br>';
         echo 'Product Name: ' . $item['name'] . '<br>';
         echo 'Price: $' . $item['price'] . '<br>';
         echo 'Quantity: ' . $item['quantity'] . '<br>';
