@@ -89,6 +89,12 @@
             echo "</ul>";
             echo '</div>';
             echo '</div>';
+
+            echo '<div class="button-container">';
+            echo '<a href="gift.php" class="button-link"><button type="button" id="backButton">Go Back</button></a>';
+            echo '</div>';
+            
+            
         } else {
             echo "Item not found";
         }

@@ -65,3 +65,23 @@ img {
 .right-column ul li {
     margin-bottom: 10px; /* Add margin between list items */
 }
+
+/* ---------------------------------------- Button */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+
+  #backButton {
+    background-color: #ccc;
+    color: #333;
+    padding: 10px;
+
+  }
+
+  #backButton:hover {
+    background-color: #999;
+  }
