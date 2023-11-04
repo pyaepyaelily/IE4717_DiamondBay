@@ -71,6 +71,11 @@ img {
     color: white;
 }
 
+.custom-link {
+    text-decoration: none; /* Remove underlines */
+  }
+  
+  
 /* ---------------------------------------- Form */
 button {
     padding: 10px 20px;

@@ -46,7 +46,7 @@
         echo '<div class="container">';
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="card">';
-            echo '<a href="gift_detail.php?id=' . $row['id'] . '">';
+            echo '<a class="custom-link" href="gift_detail.php?id=' . $row['id'] . '">';
             echo '<img src="asset/img/' . $row['image'] . '" alt="' . $row['image'] . '">';
             echo '<h3 class="giftName">' . $row['name'] . '</h3>';
             echo '<p class="giftDesc">' . $row['description'] . '</p>';
@@ -74,7 +74,7 @@
         echo '<div class="container">';
         while ($row1 = mysqli_fetch_assoc($result1)) {
             echo '<div class="card">';
-            echo '<a href="gift_detail.php?id=' . $row1['id'] . '">';
+            echo '<a class="custom-link" href="gift_detail.php?id=' . $row1['id'] . '">';
             echo '<img src="asset/img/' . $row1['image'] . '" alt="' . $row1['image'] . '">';
             echo '<h3 class="giftName">' . $row1['name'] . '</h3>';
             echo '<p class="giftName">' . $row1['description'] . '</p>';
