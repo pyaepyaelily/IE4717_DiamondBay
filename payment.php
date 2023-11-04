@@ -39,7 +39,7 @@
         // Include the save_data.php script for processing the form submission
         include('save_data.php');
 
-        session_start();
+        // session_start();
 
         echo '<h2 class="payment_heading">Payment</h2>';
         echo '<h4 class="payment_desc">At Diamond Bay, we are committed to providing you with the best online shopping experience. Our secure payment process ensures that your personal and financial information is kept safe and confidential.</h4>';
@@ -87,7 +87,7 @@
             foreach ($cart as $item) {
                 echo '<tr>';
                 echo '<td></td>'; // An empty cell for alignment with "Online Deals"
-                echo '<td>' . $item['name'] . '</td>';
+                echo '<td><p>' . $item['name'] . '</p></td>';
                 echo '<td>' . $item['quantity'] . '</td>';
                 echo '<td>$' . $item['price'] . '</td>';
                 echo '</tr>';
@@ -101,9 +101,56 @@
             echo '      </table>';
             echo '  </div>';
         } else {
-            echo '<p>No items in the cart.</p>';
+            echo '      <table style="width:100%">';
+            echo '          <tr>';
+            echo '              <td>Image</td>';
+            echo '              <td>';
+            echo '                  <table>';
+            echo '                      <tr>';
+            echo '                          <td>Movie Title</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Hall</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Date</td>';
+            echo '                      </tr>';
+            echo '                      <tr>';
+            echo '                          <td>Time</td>';
+            echo '                      </tr>';
+            echo '                   </table>';
+            echo '              </td>';
+            echo '          </tr>';
+            echo '          <tr>';
+            echo '              <td>Seats</td>';
+            echo '              <td>Tobias</td>';
+            echo '              <td>Tobias</td>';
+            echo '              <td>Tobias</td>';
+            echo '          </tr>';
+            echo '   <tr> ';
+            echo '      <td> Online Deals</td> ';
+            echo '      <td></td> ';
+            echo '      <td></td> ';
+            echo '      <td></td> ';
+            echo '   </tr> ';
+
+            echo '<tr>';
+            echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+            echo '<td></td>';
+            echo '<td></td>';
+            echo '<td></td>';
+            echo '</tr>';
+
+            echo '          <tr>';
+            echo '              <td>Payment</td>';
+            echo '              <td></td>';
+            echo '              <td></td>';
+            echo '              <td>Linus</td>';
+            echo '          </tr>';
+            echo '      </table>';
         }
         echo '  <div class="item3"></div>';
+        echo '</div>';
         echo '</div>';
 
         echo '    <br>';
