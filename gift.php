@@ -137,13 +137,13 @@
 
         echo '<div class="form-group">';
         echo '    <label for="name">Name*</label>';
-        echo '    <input type="text" id="name" name="name" required pattern="[A-Za-z ]+">';
+        echo '    <input type="text" id="name" name="name">';
         echo '    <br>';
         echo '</div>';
 
         echo '<div class="form-group">';
         echo '    <label for="contactNumber">Contact Number*</label>';
-        echo '    <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{8}">';
+        echo '    <input type="tel" id="contactNumber" name="contactNumber">';
         echo '    <br>';
         echo '</div>';
 
@@ -220,7 +220,7 @@
             });
         });
     </script> -->
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             const successParam = new URLSearchParams(window.location.search).get('success');
             const errorParam = new URLSearchParams(window.location.search).get('error');
@@ -245,9 +245,69 @@
                 popup.style.display = 'none';
             });
         });
+    </script> -->
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successParam = new URLSearchParams(window.location.search).get('success');
+            const errorParam = new URLSearchParams(window.location.search).get('error');
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('close-popup');
+            const form = document.getElementById('enquiryForm');
+            const popupMessage = document.getElementById('popup-message');
+
+            form.addEventListener("submit", function(event) {
+                // Validate the name field
+                const nameInput = document.getElementById("name");
+                const nameValue = nameInput.value;
+                const namePattern = /^[A-Za-z\s]+$/;
+
+                if (!namePattern.test(nameValue)) {
+                    alert("Invalid name format. Please use only alphabet characters and spaces.");
+                    event.preventDefault();
+                }
+
+                // Validate the email field
+                const emailInput = document.getElementById("email");
+                const emailValue = emailInput.value;
+                const emailPattern = /^\w+([\.-]?\w+)*@(\w+(\.\w{2,3}){1,3})$/;
+
+                if (!emailPattern.test(emailValue)) {
+                    alert("Invalid email address. Please enter a valid email address with a maximum of three domain parts, each having a valid top-level domain (e.g., example.com). Ensure that there are no extra dots (.) or invalid characters in the address.");
+                    event.preventDefault();
+                }
+
+                //Validate the contact number field
+                const phoneInput = document.getElementById("contactNumber");
+                const phoneValue = phoneInput.value;
+                const phonePattern = /[0-9]{8}/;
+                if (!phonePattern.test(phoneValue)) {
+                    alert("Invalid phone number. Please enter a valid 8-digit phone number without spaces, dashes, or special characters.");
+                    event.preventDefault();
+                }
+
+
+            });
+
+
+            if (successParam === '1') {
+                // Display the success message if the success query parameter is present
+                popupMessage.textContent = 'Thank you for your submission! Your enquiry has been sent successfully.';
+                popup.style.display = 'block';
+                form.reset();
+            } else if (errorParam === '1') {
+                // Display the error message if the error query parameter is present
+                popupMessage.textContent = 'Sorry, there was an error processing your enquiry. Please check your inputs and try again.';
+                popup.style.display = 'block';
+            }
+
+            closePopup.addEventListener('click', function() {
+                // Close the popup when the close button is clicked
+                popup.style.display = 'none';
+            });
+        });
     </script>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
