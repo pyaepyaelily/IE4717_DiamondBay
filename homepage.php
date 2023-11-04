@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-    <link rel="stylesheet" href="asset\style\navbar_footer.css">
+    <link rel="stylesheet" href="asset\style\movies.css">
 </head>
 <body>
     <div class="navbar">
