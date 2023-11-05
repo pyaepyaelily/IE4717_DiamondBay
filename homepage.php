@@ -17,25 +17,9 @@
         </div>
     </div>
 
+
     <div class="div-body">
-    </div>
-
-    
-
-    <!-- <section class="mt-5">
-        <h5 class="title-header">Now Showing: </p>
-        <br>
-        <div class="container">
-            <h6 class="info-movies">Avatar: The Way of Water</h6>
-            <img src="asset\img\avatar.png" width="200" alt="Avatar">
-            <p class="info-movies">Duration:</p>
-            <p class="info-movies">Rating:</p>
-            <p class="info-movies">Description:</p>
-             
-        </div>
-
-    </section> -->
-
+        
     <?php
         // Include your database connection code
         include('db_connection.php');
@@ -51,44 +35,49 @@
     
         echo '<h2 class="title-header">Now Showing</h2>';
         echo '<br>';
-
-        echo '<div class="container custom-right-shift">';
+        
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="card">';
+            echo '<div class="custom-right-shift">';
+            echo '<div class="card" style=“height: 50%”/>';
             echo '<h3>' . $row['name'] . '</h3>';
-            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
-            echo '<div class="image-container" style="max-width: 200px;">
-            <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 100%;"></a>
-            <br>
-            <p class="movie-desc2">' . $row['duration'] . '</p>
-            <p class="movie-desc2">' . $row['rating'] . '</p>
-            <br>
-            <p class="movie-desc">' . $row['description'] . '</p>
-        </div>';
             echo '<br>';
+            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            echo '<div class="image-container">
+            <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
+            <br>
+            <p class="movie-dur">' . $row['duration'] . '</p>
+            <p class="movie-rate">' . $row['rating'] . '</p>
+            <br>
+            </div>';
+            echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            echo '</div>';
+            echo '</div>';
         }
+        // The below code includes the description, but doesn't look very neat.
+        // while ($row = mysqli_fetch_assoc($result)) {
+        //     echo '<div class="custom-right-shift">';
+        //     echo '<div class=‘card’ style=“height: 50%”/>';
+        //     echo '<h3>' . $row['name'] . '</h3>';
+        //     echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+        //     echo '<div class="image-container">
+        //     <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
+        //     <br>
+        //     <p class="movie-desc2">' . $row['duration'] . '</p>
+        //     <p class="movie-desc2">' . $row['rating'] . '</p>
+        //     <br>
+        //     <p class="movie-desc">' . $row['description'] . '</p>
+        //     </div>';
+        //     echo '</div>';
+        //     echo '</div>';
+        // }
+        
         echo '</div>';
     ?>
-    
+    </div>
 
     
 
-
-    <!-- <section class="mt-5">
-        <h5 class="title-header">Advance Sales:</p>
-        <br>
-        <div class="container">
-            <h6 class="info-movies">Talk to me</h6>
-            <img src="asset\img\talktome.png" width="200" alt="Avatar">
-            <p class="info-movies">Duration:</p>
-            <p class="info-movies">Rating:</p>
-            <p class="info-movies">Description:</p>
-             
-        </div>
-
-    </section> -->
-
-
+    <div class="div-body">
     <?php
         // Include your database connection code
         include('db_connection.php');
@@ -104,27 +93,47 @@
     
         echo '<br>';
         echo '<br>';
-        echo '<h2>Advance Sales</h2>';
+        echo '<h2 class="title-header">Advance Sales</h2>';
         echo '<br>';
 
-        echo '<div class="container custom-right-shift">';
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div>';
+            echo '<div class="custom-right-shift">';
+            echo '<div class="card">';
             echo '<h3>' . $row['name'] . '</h3>';
-            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
-            echo '<div style="max-width: 200px;">
-            <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 100%;"></a>
-            <br>
-            <p>' . $row['duration'] . '</p>
-            <p>' . $row['rating'] . '</p>
-            <br>
-            <p>' . $row['description'] . '</p>
-        </div>';
             echo '<br>';
+            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            echo '<div class="image-container">
+            <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
+            <br>
+            <p class="movie-dur">' . $row['duration'] . '</p>
+            <p class="movie-rate">' . $row['rating'] . '</p>
+            <br>
+            </div>';
+            echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            echo '</div>';
+            echo '</div>';
         }
+       
+        // The code below has description, but not very neat on screen
+        //while ($row = mysqli_fetch_assoc($result)) {
+        //     echo '<div class="custom-right-shift">';
+        //     echo '<div class="card">';
+        //     echo '<h3>' . $row['name'] . '</h3>';
+        //     echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+        //     echo '<div class="image-container">
+        //     <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
+        //     <br>
+        //     <p class="movie-desc2">' . $row['duration'] . '</p>
+        //     <p class="movie-desc2">' . $row['rating'] . '</p>
+        //     <br>
+        //     <p class="movie-desc">' . $row['description'] . '</p>
+        //     </div>';
+        //     echo '</div>';
+        //     echo '</div>';
+        // }
+        echo '</div>';
+        echo '<br>';
     ?> 
-  
-    <div class="div-body">
     </div>
 
 
