@@ -12,7 +12,7 @@
         </div>
         <div class="navbar-links">
             <a href="homepage.php">Home</a>
-            <a href="#">Promotions</a>
+            <a href="promotions.php">Promotions</a>
             <a href="gift.php">Gifts & Vouchers</a>
         </div>
     </div>
