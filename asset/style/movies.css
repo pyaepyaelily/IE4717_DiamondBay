@@ -82,8 +82,59 @@ footer {
 .info-movies {
     font-family: "Georgia", sans-serif; /* Change to your preferred font family */
     font-size: 17px; /* Change to your preferred font size */
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .mt-5 {
     margin-bottom: 20px;
 }
+
+.custom-right-shift {
+    display: inline-block;
+    margin-left: 50px; /* Adjust the margin value as needed */
+    margin-right: 20px; /* Add margin for spacing between containers */
+}
+
+.movie-desc {
+    font-family: "Georgia", sans-serif; /* Change to your preferred font family */
+    font-size: 12px; /* Change to your preferred font size */
+}
+
+.movie-dur {
+    font-family: "Georgia", sans-serif; /* Change to your preferred font family */
+    font-size: 17px; /* Change to your preferred font size */
+}
+
+.movie-rate {
+    font-family: "Georgia", sans-serif;
+    font-size: 17px;
+    color: rgb(57, 169, 57); /* Set the desired font color to green */
+    text-shadow: 1px 1px 1px black; /* Add a black text shadow for the highlight effect */
+}
+
+
+.image-container {
+    max-width: 200px; /* Set the maximum width as needed */
+}
+
+.image-container img {
+    width: 100%; /* Make sure the image width is 100% of its container */
+    height: auto; /* Automatically maintain the image's aspect ratio */
+}
+
+.more-details-button {
+    font-family: "Georgia", sans-serif;
+    font-size: 16px;
+    background-color: gray;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.more-details-button:hover {
+    background-color: darkgray;
+}
+
