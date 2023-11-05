@@ -157,3 +157,42 @@ footer {
 
 /* Add other styles for your title and image as needed */
 
+/* Add styles for the video element */
+/* Center align the video */
+video {
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto; /* Auto margin for center alignment */
+    display: block; /* To center horizontally */
+}
+
+.trailer-header {
+    font-family: "Georgia", sans-serif; /* Change to your preferred font family */
+    font-size: 30px; /* Change to your preferred font size */
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+#selectButton {
+    background-color: grey;
+    color: white;
+    font-size: 0.8em;
+    font-family: "Georgia", sans-serif;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Add this CSS in your external CSS file or within a <style> tag in the HTML */
+.location-buttons {
+    margin-top: 20px; /* Add spacing above the buttons */
+}
+
+.location-button {
+    background-color: grey;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    margin: 5px; /* Add spacing between the buttons */
+    border: none;
+    cursor: pointer;
+}
