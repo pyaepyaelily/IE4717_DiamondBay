@@ -1,0 +1,146 @@
+body {
+    color: white;
+    background-color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page covers at least the full viewport height */
+    margin: 0;
+}
+
+.div_body {
+    margin: 0 40px 100px 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------- Navbar */
+.navbar {
+    background-color: white;
+    overflow: hidden;
+}
+
+.navbar-logo {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.navbar-logo img {
+    width: 170px;
+    height: auto;
+}
+
+.navbar-links {
+    text-align: center;
+    background-color: #444;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.navbar-links a:hover {
+    background-color: #555;
+}
+
+/* ---------------------------------------- Footer */
+footer {
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+.footer-row {
+    margin: 10px;
+}
+
+.footer-row img {
+    width: 60px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.promo-header {
+    font-family: "Georgia", sans-serif; /* Change to your preferred font family */
+    font-size: 25px; /* Change to your preferred font size */
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.custom-right-shift {
+    display: inline-block;
+    margin-left: 50px; /* Adjust the margin value as needed */
+    margin-right: 20px; /* Add margin for spacing between containers */
+}
+
+.banner-container {
+    max-width: 700px;
+    margin-left: 10px; /* Adjust the margin value as needed */
+    margin-right: 20px; /* Set the maximum width as needed */
+}
+
+/* This is the code that changes the size of the movie poster */
+.banner-container img {
+    /* max-width: 700px; */
+    width: 100%; /* Make sure the image width is 100% of its container */
+    height: auto;
+    margin-left: 20px; /* Adjust the margin value as needed */
+    margin-right: 30px; /* Automatically maintain the image's aspect ratio */
+}
+
+.movie-details-container {
+    display: flex;
+    align-items: flex-start; /* Align content to the top of the container */
+    margin-top: 20px;
+}
+
+/* Add or update other styles as needed */
+
+
+.image-container {
+    max-width: 200px;
+    flex: 1;
+    padding: 20px;
+}
+
+.description-container {
+    flex: 1;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.promo-description {
+    font-family: "Georgia", sans-serif;
+    font-size: 17px;
+    color: #ffffff; /* Adjust the text color as needed */
+}
+
+.back-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-link {
+    font-family: "Georgia", sans-serif;
+    font-size: 16px;
+    background-color: gray;
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background-color: darkgray;
+}
