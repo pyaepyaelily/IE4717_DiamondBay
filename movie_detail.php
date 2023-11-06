@@ -46,6 +46,8 @@
                 echo '<p class="movie-dur">' . $row['duration'] . '</p><br>';
                 echo '<p class="movie-rate">' . $row['rating'] . '</p>';
                 echo '<br>';
+            
+
                 
                 // Add the date choosing button here
                 echo '<label for="datePicker">Select a Date:<br></label>';

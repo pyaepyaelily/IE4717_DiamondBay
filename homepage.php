@@ -41,7 +41,8 @@
             echo '<div class="card" style=“height: 50%”/>';
             echo '<h3>' . $row['name'] . '</h3>';
             echo '<br>';
-            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            // echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            echo '<a href="movie_detail_1.php?id=' . $row['id'] . '">';
             echo '<div class="image-container">
             <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
             <br>
@@ -49,7 +50,8 @@
             <p class="movie-rate">' . $row['rating'] . '</p>
             <br>
             </div>';
-            echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            // echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            echo '<a class="more-details-button" href="movie_detail_1.php?id=' . $row['id'] . '">More Details</a>';
             echo '</div>';
             echo '</div>';
         }
@@ -101,7 +103,8 @@
             echo '<div class="card">';
             echo '<h3>' . $row['name'] . '</h3>';
             echo '<br>';
-            echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            // echo '<a href="movie_detail.php?id=' . $row['id'] . '">';
+            echo '<a href="movie_detail_1.php?id=' . $row['id'] . '">';
             echo '<div class="image-container">
             <img src="asset/img/' . $row['movie_banner'] . '" alt="' . $row['movie_banner'] . '" style="width: 10% height: 50%; object-fit=contain;"></a>
             <br>
@@ -109,7 +112,8 @@
             <p class="movie-rate">' . $row['rating'] . '</p>
             <br>
             </div>';
-            echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            // echo '<a class="more-details-button" href="movie_detail.php?id=' . $row['id'] . '">More Details</a>';
+            echo '<a class="more-details-button" href="movie_detail_1.php?id=' . $row['id'] . '">More Details</a>';
             echo '</div>';
             echo '</div>';
         }
