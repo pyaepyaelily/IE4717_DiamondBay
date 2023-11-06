@@ -23,29 +23,39 @@
 
 
     <?php
-    // Include your database connection code
+    session_start();
     include('db_connection.php');
+
     $show_time_id = $_GET['id'];
     $showDate = $_GET['showDate'];
     $showTime = $_GET['showTime'];
     $hallId = $_GET['hallNumber'];
 
-    // Query to retrieve seat data for the specified hall
-    $seat_query = "SELECT seat_num, available FROM hall WHERE hall_id = $hallId AND show_time_id =  $show_time_id;";
+    $movieId = $_SESSION['movieId'];
+
+    $seat_query = "SELECT * FROM hall WHERE hall_num = $hallId AND show_time_id =  $show_time_id;";
     $seat_result = mysqli_query($connection, $seat_query);
 
-    // Check if the query was successful
+    echo '<ul class="breadcrumb">';
+    echo '<li><a href="homepage.php">Home</a></li>';
+    echo "<li><a href='movie_detail_1.php?id=$movieId'>" . $_SESSION['movieName'] . "</a></li>";
+    echo '<li>Seat Selection</li>';
+    echo '</ul>';
+
     if ($seat_result) {
-        // Start displaying the seat buttons
         echo '<h2 class="title-header">Seat Selection</h2>';
-        echo '<div id="seat-container" style="text-align: center;">'; // Center the container
+        echo '<div id="seat-container" style="text-align: center;">';
 
         // Create an array to group seat buttons by row
         $seatRows = [];
         echo '<form id="seat-selection-form">';
+
         while ($seat_row = mysqli_fetch_assoc($seat_result)) {
+            $seatID = $seat_row['id'];
             $seatNumber = $seat_row['seat_num'];
             $isAvailable = $seat_row['available'];
+            $seatType = $seat_row['type'];
+            $seatPrice = $seat_row['price'];
 
             // Extract the row and seat number
             $row = preg_replace('/[0-9]/', '', $seatNumber); // Extract alphabetic characters (the row)
@@ -62,7 +72,8 @@
             $buttonDisabled = ($isAvailable == 1) ? 'disabled' : '';
             $buttonId = 'seat-' . str_replace(array(' ', '/'), '-', $seatNumber);
 
-            $seatRows[$row][] = '<button class="' . $buttonClass . '" onclick="' . $buttonOnClick . '" ' . $buttonDisabled . ' id="' . $buttonId . '" style="margin: 5px; padding: 10px;">' . $seatNumber . '</button>';
+            // $seatRows[$row][] = '<button class="' . $buttonClass . '" onclick="' . $buttonOnClick . '" ' . $buttonDisabled . ' id="' . $buttonId . '" style="margin: 5px; padding: 10px;">' . $seatNumber . '</button>';
+            $seatRows[$row][] = '<button class="' . $buttonClass . '" onclick="' . $buttonOnClick . '" ' . $buttonDisabled . ' id="' . $buttonId . '" style="margin: 5px; padding: 10px;" data-seat-id="' . $seatID . '" data-seat-type="' . $seatType . '" data-seat-price="' . $seatPrice . '">' . $seatNumber . '</button>';
         }
 
         echo '</form>';
@@ -73,6 +84,7 @@
             echo implode(' ', $seatButtons); // Display the seat buttons for the row
             echo '</div>';
         }
+
 
         echo '</div>';
     } else {
@@ -94,23 +106,40 @@
             button.classList.toggle("selected-seat");
         };
 
+
         document.getElementById('go-to-online-deals-button').onclick = function() {
+            
             // Collect the selected seats
             var selectedSeats = document.querySelectorAll('.selected-seat');
 
             // Check if at least one seat is selected
             if (selectedSeats.length > 0) {
-                // Create the URL with selected seats
-                var selectedSeatNumbers = Array.from(selectedSeats).map(function(seat) {
-                    return seat.textContent;
+                // Create arrays to store the selected seat numbers, types, and prices
+                var selectedSeatID = [];
+                var selectedSeatNumbers = [];
+                var selectedSeatTypes = [];
+                var selectedSeatPrices = [];
+
+                selectedSeats.forEach(function(seat) {
+                    selectedSeatNumbers.push(seat.textContent);
+                    selectedSeatID.push(seat.getAttribute('data-seat-id'));
+                    selectedSeatTypes.push(seat.getAttribute('data-seat-type'));
+                    selectedSeatPrices.push(seat.getAttribute('data-seat-price'));
                 });
 
-                var url = "onlineDeals.php?showDate=" + encodeURIComponent('<?php echo $showDate; ?>') +
+                // Create the URL with selected seats, types, and prices
+                var url = "onlineDeals.php?showTimeID=<?php echo $show_time_id; ?>" +
+                    "&showDate=" + encodeURIComponent('<?php echo $showDate; ?>') +
                     "&showTime=" + encodeURIComponent('<?php echo $showTime; ?>') +
                     "&hallNumber=" + encodeURIComponent('<?php echo $hallId; ?>') +
-                    "&selectedSeat=" + encodeURIComponent(selectedSeatNumbers.join(','));
+                    "&selectedSeatID=" + encodeURIComponent(selectedSeatID.join(',')) +
+                    "&selectedSeat=" + encodeURIComponent(selectedSeatNumbers.join(',')) +
+                    "&selectedSeatType=" + encodeURIComponent(selectedSeatTypes.join(',')) +
+                    "&selectedSeatPrice=" + encodeURIComponent(selectedSeatPrices.join(','));
 
                 window.location.href = url;
+
+
             } else {
                 // Alert the user if no seats are selected
                 alert('Please select at least one seat before proceeding.');

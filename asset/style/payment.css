@@ -21,10 +21,14 @@ ul.breadcrumb li+li:before {
 ul.breadcrumb li a {
     color: #b1b1b1;
     text-decoration: none;
-    pointer-events: none; /* Prevent the link from being clickable */
-    text-decoration: none; /* Remove the underline */
-    color: gray; /* Change the color to indicate it's disabled */
-    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+    pointer-events: none;
+    /* Prevent the link from being clickable */
+    text-decoration: none;
+    /* Remove the underline */
+    color: gray;
+    /* Change the color to indicate it's disabled */
+    cursor: not-allowed;
+    /* Change the cursor to indicate it's not clickable */
 }
 
 ul.breadcrumb li a:hover {
@@ -55,9 +59,10 @@ ul.breadcrumb li a:hover {
     border: 1px solid black
 }
 
-#movieDetails{
+#movieDetails {
     padding: 12px;
 }
+
 /* ---------------------------------------- Form */
 .grid-container {
     display: grid;
@@ -70,7 +75,9 @@ ul.breadcrumb li a:hover {
     color: red;
 }
 
-.error-name, .error-card-number, .error-cvv {
+.error-name,
+.error-card-number,
+.error-cvv {
     display: none;
     color: red;
 }
@@ -95,10 +102,12 @@ input[type="email"]:focus {
 }
 
 #creditcard-img {
-    width: 70px; /* Adjust the desired width */
-    height: auto; /* Maintain aspect ratio */
-    border: none; 
-  }
+    width: 70px;
+    /* Adjust the desired width */
+    height: auto;
+    /* Maintain aspect ratio */
+    border: none;
+}
 
 .expiry-container {
     display: flex;
@@ -117,9 +126,9 @@ input[type="email"]:focus {
 .button-container {
     text-align: center;
     margin-top: 20px;
-  }
+}
 
-  .button-container button {
+.button-container button {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -127,18 +136,18 @@ input[type="email"]:focus {
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
-  }
+}
 
-  .button-container button:hover {
+.button-container button:hover {
     background-color: #0056b3;
-  }
+}
 
-  /* Style for the "Back" button */
-  #backButton {
+/* Style for the "Back" button */
+#backButton {
     background-color: #ccc;
     color: #333;
-  }
+}
 
-  #backButton:hover {
+#backButton:hover {
     background-color: #999;
-  }
+}

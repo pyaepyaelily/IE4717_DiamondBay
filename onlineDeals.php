@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Deals</title>
@@ -22,7 +21,7 @@
     <div class="div_body">
         <div>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="homepage.php">Home</a></li>
                 <li><a href="#">Movie Details</a></li>
                 <li><a href="#">Seat Selection</a></li>
                 <li>Online Deals</li>
@@ -30,11 +29,32 @@
         </div>
 
         <?php
-        // Include your database connection code
+        // session_start();
         include('db_connection.php');
 
         // Include the save_data.php script for processing the form submission
         include('save_data.php');
+        
+        $show_time_id = $_GET['showTimeID'];
+        $showDate = $_GET['showDate'];
+        $showTime = $_GET['showTime'];
+        $hallId = $_GET['hallNumber'];
+        $selectedSeat = urldecode($_GET['selectedSeat']);
+        $selectedSeatArray = explode(',', $selectedSeat);
+        $selectedSeatTypeArray = explode(',', $_GET['selectedSeatType']);
+        $selectedSeatPriceArray = explode(',', $_GET['selectedSeatPrice']);
+        $selectedSeatIDArray = explode(',', $_GET['selectedSeatID']);
+
+
+        $_SESSION['show_time_id'] = $show_time_id;
+        $_SESSION['showDate'] =  $showDate;
+        $_SESSION['showTime'] = $showTime;
+        $_SESSION['hallId'] =  $hallId;
+        $_SESSION['selectedSeat'] = $selectedSeat;
+        $_SESSION['selectedSeatArray'] = $selectedSeatArray;
+        $_SESSION['selectedSeatTypeArray'] = $selectedSeatTypeArray;
+        $_SESSION['selectedSeatPriceArray'] = $selectedSeatPriceArray;
+        $_SESSION['selectedSeatIDArray'] = $selectedSeatIDArray;
 
         // Query the database to select the data from the 'online_deals' table.
         $query = "SELECT id, name, price, description, image FROM online_deals";
@@ -102,6 +122,7 @@
             ?>
         });
     </script>
+
 
     <footer>
         <div class="footer-row">

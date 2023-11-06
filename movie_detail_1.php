@@ -45,14 +45,14 @@
             $movieRating = $row['rating'];
             $movieDuration = $row['duration'];
 
-            // Store the movie name in a session variable
+            $_SESSION['movieId'] = $movieId;
             $_SESSION['movieName'] = $movieName;
             $_SESSION['movieImg'] = $movieImg;
             $_SESSION['movieRating'] = $movieRating;
             $_SESSION['movieDuration'] = $movieDuration;
 
             echo '<ul class="breadcrumb">';
-            echo '<li><a href="#">Home</a></li>';
+            echo '<li>  <a href="homepage.php">Home</a></li>';
             echo "<li>$movieName</li>";
             echo '</ul>';
 
@@ -87,14 +87,16 @@
             echo '<p class="theater-button">' . $theater . '</p>';
             // Add a hidden div for each theater and show date to display start times
             echo '<div class="start-times" data-theater="' . $theater . '" data-show-date="' . $movie_date . '">';
-        
+            $formatted_date = date("d-m-Y", strtotime($movie_date));
+
+            echo '<p class="theater-button">' . $formatted_date . '</p>';
             $show_dateTime_query = "SELECT id, movie_time, hall FROM show_time WHERE movie_id = $movieId AND theatre = '$theater' AND movie_date = '$movie_date' ORDER BY movie_time ASC;";
             $show_dateTime_result = mysqli_query($connection, $show_dateTime_query);
         
             while ($show_dateTime_row = mysqli_fetch_assoc($show_dateTime_result)) {
                 $movie_time = substr($show_dateTime_row['movie_time'], 0, 5); // Extract only HH:MM
                 $hallNumber = $show_dateTime_row['hall'];
-                $show_time_ID = $show_dateTime_row['id']; // Define $show_time_ID
+                $show_time_ID = $show_dateTime_row['id'];
         
                 $_SESSION['theater'] = $theater;
                 $_SESSION['movie_date'] = $movie_date;
