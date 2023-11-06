@@ -71,3 +71,32 @@ footer {
     height: 30px;
     margin: 0 10px;
 }
+
+/* ---------------------------------------- Breadcrumb */
+ul.breadcrumb {
+    /* padding: 10px 16px; */
+    list-style: none;
+    color: white;
+    /* background-color: #eee; */
+    margin: 10px 0 30px 0;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #b1b1b1;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #8b8b8b;
+}
