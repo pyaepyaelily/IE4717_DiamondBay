@@ -44,9 +44,6 @@
             $movieImg =  $row['movie_banner'];
             $movieRating = $row['rating'];
             $movieDuration = $row['duration'];
-            $movieLanguage = $row['languages'];
-            $movieRelease = $row['release_date'];
-            $movieTrailer = $row['trailer'];
 
             $_SESSION['movieId'] = $movieId;
             $_SESSION['movieName'] = $movieName;
@@ -55,25 +52,19 @@
             $_SESSION['movieDuration'] = $movieDuration;
             $_SESSION['movieLanguage'] = $movieLanguage;
             $_SESSION['movieRelease'] = $movieRelease;
-            $_SESSION['movieTrailer'] = $movieTrailer;
 
-            //Name of movie
             echo '<ul class="breadcrumb">';
             echo '<li>  <a href="homepage.php">Home</a></li>';
             echo "<li>$movieName</li>";
             echo '</ul>';
 
-            //Name of movie
             echo "<h1 class='title-header'>$movieName</h1>";
             echo '<div class="movie-details-container">';
 
-            //Movie Poster
             echo '<div class="banner-container">';
             echo "<img src='asset/img/$movieImg ' alt='$movieImg'>";
             echo '</div>';
 
-            //Runtime, rating, languages, release date
-            echo '<div class="description-container">';
             echo "<p class='movie-dur'>RUNTIME: $movieDuration</p>";
             echo '<br>';
             echo "<p class='movie-rate'>RATING: $movieRating</p>";
@@ -82,16 +73,13 @@
             echo '<br>';
             echo "<p class='movie-dur'>RELEASE: $movieRelease</p>";
             echo '<br>';
-            echo '<br>';
-            
-            //Synopsis
-            echo '<h3>SYNOPSIS:</h3>';
+
+            echo '<div class="description-container">';
             echo '<p class="movie-description">' . $row['description'] . '</p>';
-            echo '</div><br>';
+            echo '<div><br>';
+
             echo '<br>';
-
-            
-
+            echo '<br>';
         } else {
             echo '<p class="movie-details-error">Movie not found</p>';
         }
@@ -105,7 +93,6 @@
             $movie_date = $show_time_row['movie_date'];
         
             echo '<p class="theater-button">' . $theater . '</p>';
-
             // Add a hidden div for each theater and show date to display start times
             echo '<div class="start-times" data-theater="' . $theater . '" data-show-date="' . $movie_date . '">';
             $formatted_date = date("d-m-Y", strtotime($movie_date));
@@ -129,28 +116,16 @@
                 echo '<button class="start-time-button"><a href="' . $url . '">' . $movie_time . '</a></button>';
             }
         
-            //this is where the container ends
             echo '</div>';
         
             // Add a <br> element to create space after each theater section
             echo '<br>';
         }
         
-        if (!$result) {
-            die("Query failed: " . mysqli_error($connection));
-        }
 
-        if ($row = mysqli_fetch_assoc($result)) {
-            echo '</div>';
-            echo '<br>';
-            echo '<h1 class="trailer-header">Trailer:</h1>';
-            echo '<video width="80%" controls>';
-            echo "<source src='asset/video/$movieTrailer' type='video/mp4'>";
-            echo 'Your browser does not support the video tag.';
-            echo '</video>';
-            echo '<br>';
-        }
 
+        echo '</div>';
+        echo '</div>';
 
 
         // Close the database connection
