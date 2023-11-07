@@ -46,6 +46,7 @@
             $movieDuration = $row['duration'];
             $movieLanguage = $row['languages'];
             $movieRelease = $row['release_date'];
+            $movieTrailer = $row['trailer'];
 
             $_SESSION['movieId'] = $movieId;
             $_SESSION['movieName'] = $movieName;
@@ -54,6 +55,7 @@
             $_SESSION['movieDuration'] = $movieDuration;
             $_SESSION['movieLanguage'] = $movieLanguage;
             $_SESSION['movieRelease'] = $movieRelease;
+            $_SESSION['movieTrailer'] = $movieTrailer;
 
             //Name of movie
             echo '<ul class="breadcrumb">';
@@ -86,7 +88,7 @@
             echo '<h3>SYNOPSIS:</h3>';
             echo '<p class="movie-description">' . $row['description'] . '</p>';
             echo '</div><br>';
-            echo '</div><br>';
+            echo '<br>';
 
             
 
@@ -103,6 +105,7 @@
             $movie_date = $show_time_row['movie_date'];
         
             echo '<p class="theater-button">' . $theater . '</p>';
+
             // Add a hidden div for each theater and show date to display start times
             echo '<div class="start-times" data-theater="' . $theater . '" data-show-date="' . $movie_date . '">';
             $formatted_date = date("d-m-Y", strtotime($movie_date));
@@ -126,6 +129,7 @@
                 echo '<button class="start-time-button"><a href="' . $url . '">' . $movie_time . '</a></button>';
             }
         
+            //this is where the container ends
             echo '</div>';
         
             // Add a <br> element to create space after each theater section
@@ -138,20 +142,15 @@
 
         if ($row = mysqli_fetch_assoc($result)) {
             echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '<br>';
             echo '<br>';
             echo '<h1 class="trailer-header">Trailer:</h1>';
             echo '<video width="80%" controls>';
-            echo '<source src="asset/video/' . $row['trailer'] . '" type="video/mp4">';
+            echo "<source src='asset/video/$movieTrailer' type='video/mp4'>";
             echo 'Your browser does not support the video tag.';
             echo '</video>';
             echo '<br>';
         }
 
-        echo '</div>';
-        echo '</div>';
 
 
         // Close the database connection
