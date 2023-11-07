@@ -72,9 +72,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Close the database connection
             $connection->close();
 
-            // Redirect to thankyou.php after all data operations are done
-            header("Location: thankyou.php");
-            exit();
+            // To send email to user
+            // Getting session
+            $movieName = $_SESSION['movieName'];
+            $theater = $_SESSION['theater'];
+            $showDate = $_SESSION['showDate'];
+            $showTime =  $_SESSION['showTime'];
+            $cart = $_SESSION['cart'];
+            $selectedSeatArray =  $_SESSION['selectedSeatArray'];
+
+            // Set the SMTP server and port for Mercury Mail
+            ini_set("SMTP", "localhost");  // Change this to the correct server address if needed
+            ini_set("smtp_port", 25);  // The default port for SMTP
+
+            // Set the sender email address
+            $senderEmail = 'diamondbay@localhost';
+
+            // Compose the email message...
+            $message = "Thank you for choosing Diamond Bay\n";
+            $message .= "Movie: $movieName\n";
+            $message .= "Location:  $theater\n";
+            $message .= "Hall:  $hallId\n";
+            $message .= "Date:  $showDate\n";
+            $message .= "Time:  $showTime\n";
+
+            // Display the online deals
+            $message .= "Online Deals:\n";
+            foreach ($cart as $item) {
+                $message .= "- " . $item['name'] . " x" . $item['quantity'] . "\n";
+            }
+
+            // Display the selected seats
+            $message .= "Seats:\n";
+            // foreach ($selectedSeatIDArray as $seat) {
+            //     $message .= "- $seat\n";
+            // }
+
+
+            for ($i = 0; $i < count($selectedSeatArray); $i++) {
+                $selectedSeat = $selectedSeatArray[$i];
+
+                $message .= "- $selectedSeat\n";
+            }
+
+            // Set the recipient email and subject
+            $recipientEmail = 'user@localhost'; // Change to your recipient's email
+            $subject = 'Confirmation of Movie Booking';
+
+            // Set additional headers including the "Return-Path" header and sender email
+            $additionalHeaders = "From: $senderEmail\r\n";
+            $additionalHeaders .= "Return-Path: $senderEmail\r\n";
+
+            // Send the email
+            $mailSuccess = mail($recipientEmail, $subject, $message, $additionalHeaders);
+
+            if ($mailSuccess) {
+                // Email sent successfully
+                header("Location: thankyou.php");
+                exit();
+            } else {
+                // Handle email sending failure
+                echo "Error sending confirmation email.";
+            }
         } else {
             // Handle the case where at least one insertion failed
             echo "Error: Not all records were inserted successfully.";
