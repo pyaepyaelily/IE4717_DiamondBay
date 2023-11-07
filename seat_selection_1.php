@@ -35,7 +35,7 @@
 
     $seat_query = "SELECT * FROM hall WHERE hall_num = $hallId AND show_time_id =  $show_time_id;";
     $seat_result = mysqli_query($connection, $seat_query);
-
+    echo '<div class="div_body">';
     echo '<ul class="breadcrumb">';
     echo '<li><a href="homepage.php">Home</a></li>';
     echo "<li><a href='movie_detail_1.php?id=$movieId'>" . $_SESSION['movieName'] . "</a></li>";
@@ -100,7 +100,7 @@
         <button class="link-button" id="go-to-online-deals-button">Go to Online Deals</button>
 
     </div>
-
+    </div>
     <script>
         function toggleSeatSelection(button) {
             button.classList.toggle("selected-seat");
@@ -108,7 +108,7 @@
 
 
         document.getElementById('go-to-online-deals-button').onclick = function() {
-            
+
             // Collect the selected seats
             var selectedSeats = document.querySelectorAll('.selected-seat');
 
