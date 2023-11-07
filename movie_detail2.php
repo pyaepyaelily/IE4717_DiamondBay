@@ -71,6 +71,7 @@
             echo '</div>';
 
             //Runtime, rating, languages, release date
+            echo '<div class="description-container">';
             echo "<p class='movie-dur'>RUNTIME: $movieDuration</p>";
             echo '<br>';
             echo "<p class='movie-rate'>RATING: $movieRating</p>";
@@ -82,10 +83,10 @@
             echo '<br>';
             
             //Synopsis
-            echo '<div class="description-container">';
             echo '<h3>SYNOPSIS:</h3>';
             echo '<p class="movie-description">' . $row['description'] . '</p>';
-            echo '<div><br>';
+            echo '</div><br>';
+            echo '</div><br>';
 
             
 
