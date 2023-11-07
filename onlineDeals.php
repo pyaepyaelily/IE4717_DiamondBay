@@ -19,14 +19,14 @@
         </div>
     </div>
     <div class="div_body">
-        <div>
+        <!-- <div>
             <ul class="breadcrumb">
                 <li><a href="homepage.php">Home</a></li>
                 <li><a href="#">Movie Details</a></li>
                 <li><a href="#">Seat Selection</a></li>
                 <li>Online Deals</li>
             </ul>
-        </div>
+        </div> -->
 
         <?php
         // session_start();
@@ -63,6 +63,15 @@
         if (!$result) {
             die("Query failed: " . mysqli_error($connection));
         }
+
+
+        echo '<ul class="breadcrumb">';
+        echo '<li><a href="homepage.php">Home</a></li>';
+        echo "<li><a href='movie_detail_1.php?id={$_SESSION['movieId']}'>" . $_SESSION['movieName'] . "</a></li>";
+        echo "<li><a href='seat_selection_1.php?id=$show_time_id&showDate=$showDate&showTime=$showTime&hallNumber=$hallId'>Seat Selection</a></li>";
+        echo '<li>Online Deals</li>';
+        echo '</ul>';
+
 
         echo '<h2 class="onlineDeals_heading">Online Deals</h2>';
         echo '<h4 class="onlineDeals_desc">Celebrate savings with our one-of-a-kind online deals, available exclusively on our platform. 

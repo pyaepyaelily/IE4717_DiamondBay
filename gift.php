@@ -14,15 +14,15 @@
             <img src="asset\img\logo.png" alt="Logo">
         </div>
         <div class="navbar-links">
-            <a href="#">Home</a>
-            <a href="#">Promotions</a>
+            <a href="homepage.php">Home</a>
+            <a href="promotions.php">Promotions</a>
             <a href="gift.php">Gifts & Vouchers</a>
         </div>
     </div>
     <div class="div_body">
         <div>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="homepage.php">Home</a></li>
                 <li>Gifts & Vouchers</li>
             </ul>
         </div>

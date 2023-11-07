@@ -14,8 +14,8 @@
             <img src="asset/img/logo.png" alt="Logo">
         </div>
         <div class="navbar-links">
-            <a href="#">Home</a>
-            <a href="#">Promotions</a>
+            <a href="homepage.php">Home</a>
+            <a href="promotions.php">Promotions</a>
             <a href="gift.php">Gifts & Vouchers</a>
         </div>
     </div>
@@ -45,7 +45,7 @@
             $term_lines = explode(',', $item_term);
 
             echo '<ul class="breadcrumb">';
-            echo '<li><a href="#">Home</a></li>';
+            echo '<li><a href="homepage.php">Home</a></li>';
             echo '<li><a href="gift.php">Gifts & Vouchers</a></li>';
             echo "<li>$item_name</li>"; // This is the dynamic part for the current page
             echo '</ul>';
