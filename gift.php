@@ -247,7 +247,7 @@
         });
     </script> -->
 
-
+    <!-- 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const successParam = new URLSearchParams(window.location.search).get('success');
@@ -287,6 +287,15 @@
                     event.preventDefault();
                 }
 
+                const postalCodeInput = document.getElementById("postalCode");
+                const postalCodePattern = /^[0-9]{6}$/;
+
+                postalCodeInput.addEventListener("blur", function() {
+                    if (!postalCodePattern.test(postalCodeInput.value)) {
+                        alert("Invalid postal code. Please enter a valid 6-digit postal code.");
+                    }
+                });
+
 
             });
 
@@ -307,7 +316,87 @@
                 popup.style.display = 'none';
             });
         });
+    </script> -->
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successParam = new URLSearchParams(window.location.search).get('success');
+            const errorParam = new URLSearchParams(window.location.search).get('error');
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('close-popup');
+            const form = document.getElementById('enquiryForm');
+            const popupMessage = document.getElementById('popup-message');
+
+            // Function to display validation alert
+            function displayAlert(message) {
+                alert(message);
+            }
+
+            // Function to validate a field using a pattern
+            function validateField(input, pattern, errorMessage) {
+                const value = input.value;
+                console.log(value);
+                if (!pattern.test(value)) {
+                    displayAlert(errorMessage);
+                    return false;
+                }
+                return true;
+            }
+
+            form.addEventListener("submit", function(event) {
+                // Validate the name field
+                const nameInput = document.getElementById("name");
+                const namePattern = /^[A-Za-z\s]+$/;
+                if (!validateField(nameInput, namePattern, "Invalid name format. Please use only alphabet characters and spaces.")) {
+                    event.preventDefault();
+                }
+
+                // Validate the email field
+                const emailInput = document.getElementById("email");
+                const emailPattern = /^\w+([\.-]?\w+)*@(\w+(\.\w{2,3}){1,3})$/;
+                if (!validateField(emailInput, emailPattern, "Invalid email address. Please enter a valid email address with a maximum of three domain parts, each having a valid top-level domain (e.g., example.com). Ensure that there are no extra dots (.) or invalid characters in the address.")) {
+                    event.preventDefault();
+                }
+
+                // Validate the contact number field
+                const phoneInput = document.getElementById("contactNumber");
+                const phonePattern = /[0-9]{8}/;
+                if (!validateField(phoneInput, phonePattern, "Invalid phone number. Please enter a valid 8-digit phone number without spaces, dashes, or special characters.")) {
+                    event.preventDefault();
+                }
+
+                // Validate the postal code field
+                const postalCodeInput = document.getElementById("postalCode");
+                const postalCodePattern = /^[0-9]{6}$/;
+                const postalCodeValue = postalCodeInput.value.trim(); // Remove leading/trailing whitespace
+
+                if (postalCodeValue !== "" && !postalCodePattern.test(postalCodeValue)) {
+                    alert("Invalid postal code. Please enter a valid 6-digit postal code.");
+                    event.preventDefault();
+                }
+
+            });
+
+            if (successParam === '1') {
+                // Display the success message if the success query parameter is present
+                popupMessage.textContent = 'Thank you for your submission! Your enquiry has been sent successfully.';
+                popup.style.display = 'block';
+                form.reset();
+            } else if (errorParam === '1') {
+                // Display the error message if the error query parameter is present
+                popupMessage.textContent = 'Sorry, there was an error processing your enquiry. Please check your inputs and try again.';
+                popup.style.display = 'block';
+            }
+
+            closePopup.addEventListener('click', function() {
+                // Close the popup when the close button is clicked
+                popup.style.display = 'none';
+            });
+        });
     </script>
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
