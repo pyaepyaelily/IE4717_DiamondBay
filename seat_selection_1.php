@@ -45,7 +45,8 @@
     if ($seat_result) {
         echo '<h2 class="title-header">Seat Selection</h2>';
         echo '<div id="seat-container" style="text-align: center;">';
-
+        echo '<p>SCREEN</p>';
+        echo '<br>';
         // Create an array to group seat buttons by row
         $seatRows = [];
         echo '<form id="seat-selection-form">';
