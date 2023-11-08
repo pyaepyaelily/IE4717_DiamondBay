@@ -50,8 +50,23 @@
             $_SESSION['movieImg'] = $movieImg;
             $_SESSION['movieRating'] = $movieRating;
             $_SESSION['movieDuration'] = $movieDuration;
-            $_SESSION['movieLanguage'] = $movieLanguage;
-            $_SESSION['movieRelease'] = $movieRelease;
+
+            // Query the database to retrieve release date and language
+            $releaseDateQuery = "SELECT release_date, language FROM movie WHERE id = $movieId";
+            $releaseDateResult = mysqli_query($connection, $releaseDateQuery);
+
+            if ($releaseDateRow = mysqli_fetch_assoc($releaseDateResult)) {
+                $releaseDate = $releaseDateRow['release_date'];
+                $language = $releaseDateRow['language'];
+            }
+
+            // Query the database to retrieve the trailer URL
+            $trailerQuery = "SELECT trailer FROM movie WHERE id = $movieId";
+            $trailerResult = mysqli_query($connection, $trailerQuery);
+
+            if ($trailerRow = mysqli_fetch_assoc($trailerResult)) {
+                $trailerVideo = $trailerRow['trailer'];
+            }
 
             echo '<ul class="breadcrumb">';
             echo '<li>  <a href="homepage.php">Home</a></li>';
@@ -65,21 +80,14 @@
             echo "<img src='asset/img/$movieImg ' alt='$movieImg'>";
             echo '</div>';
 
-            echo "<p class='movie-dur'>RUNTIME: $movieDuration</p>";
-            echo '<br>';
-            echo "<p class='movie-rate'>RATING: $movieRating</p>";
-            echo '<br>';
-            echo "<p class='movie-dur'>LANGUAGES AVAILABLE: $movieLanguage</p>";
-            echo '<br>';
-            echo "<p class='movie-dur'>RELEASE: $movieRelease</p>";
-            echo '<br>';
-
             echo '<div class="description-container">';
+            echo '<p class="movie-dur"><strong>RUNTIME:</strong> ' . $movieDuration . '</p><br>';
+            echo '<p class="movie-rate"><strong>RATING:</strong> ' . $movieRating . '</p><br>';
+            echo '<p class="movie-release-date"><strong>RELEASE:</strong> ' . $releaseDate . '</p><br>';
+            echo '<p class="movie-language"><strong>LANGUAGES AVAILABLE:</strong> ' . $language . '</p><br><br>';
+            echo '<h3>SYNOPSIS:</h3><br>';
             echo '<p class="movie-description">' . $row['description'] . '</p>';
             echo '<div><br>';
-
-            echo '<br>';
-            echo '<br>';
         } else {
             echo '<p class="movie-details-error">Movie not found</p>';
         }
@@ -87,11 +95,11 @@
 
         $show_time_query = "SELECT DISTINCT theatre, movie_date FROM show_time WHERE movie_id = $movieId ORDER BY theatre ASC, movie_date ASC, movie_time ASC;";
         $show_time_result = mysqli_query($connection, $show_time_query);
-        
+
         while ($show_time_row = mysqli_fetch_assoc($show_time_result)) {
             $theater = $show_time_row['theatre'];
             $movie_date = $show_time_row['movie_date'];
-        
+
             echo '<p class="theater-button">' . $theater . '</p>';
             // Add a hidden div for each theater and show date to display start times
             echo '<div class="start-times" data-theater="' . $theater . '" data-show-date="' . $movie_date . '">';
@@ -100,38 +108,45 @@
             echo '<p class="theater-button">' . $formatted_date . '</p>';
             $show_dateTime_query = "SELECT id, movie_time, hall FROM show_time WHERE movie_id = $movieId AND theatre = '$theater' AND movie_date = '$movie_date' ORDER BY movie_time ASC;";
             $show_dateTime_result = mysqli_query($connection, $show_dateTime_query);
-        
+
             while ($show_dateTime_row = mysqli_fetch_assoc($show_dateTime_result)) {
                 $movie_time = substr($show_dateTime_row['movie_time'], 0, 5); // Extract only HH:MM
                 $hallNumber = $show_dateTime_row['hall'];
                 $show_time_ID = $show_dateTime_row['id'];
-        
+
                 $_SESSION['theater'] = $theater;
                 $_SESSION['movie_date'] = $movie_date;
                 $_SESSION['movie_time'] = $movie_time;
                 $_SESSION['hallNumber'] = $hallNumber;
-        
+
                 // Create a button with an embedded anchor tag using the desired URL format
                 $url = "seat_selection_1.php?id=" . urlencode($show_time_ID) . "&showDate=" . urlencode($movie_date) . "&showTime=" . urlencode($movie_time) . "&hallNumber=" . urlencode($hallNumber);
                 echo '<button class="start-time-button"><a href="' . $url . '">' . $movie_time . '</a></button>';
             }
-        
+
             echo '</div>';
-        
+
             // Add a <br> element to create space after each theater section
             echo '<br>';
         }
-        
 
 
         echo '</div>';
         echo '</div>';
-
 
         // Close the database connection
         mysqli_close($connection);
+        
         ?>
     </div>
+
+    <?php echo "<h1 class='title-header'>Trailer:</h1>"; ?>
+
+    <!-- Add the video above the footer -->
+    <video width="1200" height="auto" controls>
+        <source src="asset/video/<?php echo $trailerVideo; ?>" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <footer>
         <div class="footer-row">
