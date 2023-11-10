@@ -32,11 +32,7 @@
 
 
         <?php
-
-        // session_start();
         include('db_connection.php');
-
-        // Include the save_data.php script for processing the form submission
         include('save_data.php');
 
         $movieId =  $_SESSION['movieId'];
@@ -51,9 +47,6 @@
         $showTime =  $_SESSION['showTime'];
         $hallId =  $_SESSION['hallId'];
         $selectedSeat = $_SESSION['selectedSeat'];
-        // $selectedSeatsData = $_SESSION['selectedSeatsData'];
-
-
 
         $selectedSeatArray =  $_SESSION['selectedSeatArray'];
         $selectedSeatTypeArray = $_SESSION['selectedSeatTypeArray'];
@@ -105,10 +98,10 @@
                 $selectedSeatPrice = $selectedSeatPriceArray[$i];
 
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>' . $selectedSeat . '</td>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '<td>$' . $selectedSeatPrice . '</td>';
                 echo '</tr>';
 
@@ -122,7 +115,7 @@
             echo ' </tr> ';
             foreach ($cart as $item) {
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>
                     <p>' . $item['name'] . '</p>
                 </td>';
@@ -140,7 +133,7 @@
             echo ' <td>Payment</td>';
             echo ' <td></td>';
             echo ' <td></td>';
-            echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+            echo '<td></td>';
             echo '<td><b>$' . number_format($totalPrice, 2) . '</b></td>';
 
             echo ' </tr>';
@@ -184,10 +177,10 @@
                 $selectedSeatPrice = $selectedSeatPriceArray[$i];
 
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>' . $selectedSeat . '</td>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '<td>$' . $selectedSeatPrice . '</td>';
                 echo '</tr>';
 
@@ -201,7 +194,7 @@
             echo ' </tr> ';
             foreach ($cart as $item) {
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>
                     <p>' . $item['name'] . '</p>
                 </td>';
@@ -219,7 +212,7 @@
             echo ' <td>Payment</td>';
             echo ' <td></td>';
             echo ' <td></td>';
-            echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+            echo '<td></td>';
             echo '<td><b>$' . number_format($totalPrice, 2) . '</b></td>';
 
             echo ' </tr>';
@@ -232,11 +225,8 @@
         echo '
 </div>';
 
-        // Close the database connection
         mysqli_close($connection);
         ?>
-
-
         <div class="centered-button">
             <a href="reset_sessions.php" class="back-to-home-button">See More Movies</a>
         </div>
