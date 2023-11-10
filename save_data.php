@@ -1,12 +1,11 @@
 <?php
-session_start(); // Start the session (if not already started)
+session_start();
 
 if (isset($_POST['submit'])) {
-    // Retrieve the selected quantity, product names, and prices
     $id = $_POST['id'];
-    $selectedQuantities = $_POST['quantity']; // An array of quantities
-    $productNames = $_POST['product_name']; // An array of product names
-    $prices = $_POST['price']; // An array of prices
+    $selectedQuantities = $_POST['quantity'];
+    $productNames = $_POST['product_name'];
+    $prices = $_POST['price']; 
 
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
@@ -27,7 +26,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // You can redirect the user to a cart or continue shopping page
     header('Location: payment.php');
     exit();
 }

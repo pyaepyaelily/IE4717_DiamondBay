@@ -20,8 +20,6 @@
         </div>
     </div>
 
-
-
     <?php
     session_start();
     include('db_connection.php');
@@ -67,18 +65,15 @@
                 $seatRows[$row] = [];
             }
 
-            // Add the seat button to the appropriate row
             $buttonClass = ($isAvailable == 0) ? 'available-seat' : 'unavailable-seat';
             $buttonOnClick = ($isAvailable == 0) ? 'toggleSeatSelection(this);' : '';
             $buttonDisabled = ($isAvailable == 1) ? 'disabled' : '';
             $buttonId = 'seat-' . str_replace(array(' ', '/'), '-', $seatNumber);
 
-            // $seatRows[$row][] = '<button class="' . $buttonClass . '" onclick="' . $buttonOnClick . '" ' . $buttonDisabled . ' id="' . $buttonId . '" style="margin: 5px; padding: 10px;">' . $seatNumber . '</button>';
             $seatRows[$row][] = '<button class="' . $buttonClass . '" onclick="' . $buttonOnClick . '" ' . $buttonDisabled . ' id="' . $buttonId . '" style="margin: 5px; padding: 10px;" data-seat-id="' . $seatID . '" data-seat-type="' . $seatType . '" data-seat-price="' . $seatPrice . '">' . $seatNumber . '</button>';
         }
 
         echo '</form>';
-        // Display seat buttons grouped by row
         ksort($seatRows); // Sort the rows alphabetically
         foreach ($seatRows as $row => $seatButtons) {
             echo '<div class="seat-row">';
@@ -86,16 +81,13 @@
             echo '</div>';
         }
 
-
         echo '</div>';
     } else {
-        // Handle the case where the query failed
         echo 'Error: Unable to retrieve seat data.';
     }
 
     mysqli_close($connection);
     ?>
-    <!-- Add the "Go to Online Deals" button with JavaScript for dynamically generating the URL -->
     <div class="button-container">
         <button class="link-button" id="go-back-button" onclick="goBack()">Go Back</button>
         <button class="link-button" id="go-to-online-deals-button">Go to Online Deals</button>
@@ -109,8 +101,6 @@
 
 
         document.getElementById('go-to-online-deals-button').onclick = function() {
-
-            // Collect the selected seats
             var selectedSeats = document.querySelectorAll('.selected-seat');
 
             // Check if at least one seat is selected
@@ -139,15 +129,11 @@
                     "&selectedSeatPrice=" + encodeURIComponent(selectedSeatPrices.join(','));
 
                 window.location.href = url;
-
-
             } else {
-                // Alert the user if no seats are selected
                 alert('Please select at least one seat before proceeding.');
             }
         };
 
-        // JavaScript function to go back to the previous page
         function goBack() {
             window.history.back();
         }

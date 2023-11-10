@@ -22,13 +22,10 @@
     <div class="div_body">
         <?php
         include('db_connection.php');
-        // Retrieve the item ID from the URL
-        $item_id = $_GET['id'];
 
-        // Query to retrieve item details
+        $item_id = $_GET['id'];
         $query = "SELECT * FROM gifts WHERE id = $item_id";
 
-        // Execute the query
         $result = mysqli_query($connection, $query);
 
         if (!$result) {
@@ -36,7 +33,6 @@
         }
 
         if ($result->num_rows > 0) {
-            // Fetch and display item details
             $row = $result->fetch_assoc();
             $item_name = $row['name'];
             $item_description = $row['description'];
@@ -47,7 +43,7 @@
             echo '<ul class="breadcrumb">';
             echo '<li><a href="homepage.php">Home</a></li>';
             echo '<li><a href="gift.php">Gifts & Vouchers</a></li>';
-            echo "<li>$item_name</li>"; // This is the dynamic part for the current page
+            echo "<li>$item_name</li>";
             echo '</ul>';
 
 
@@ -61,7 +57,6 @@
             echo '</div>';
             echo '<div class="right-column">';
 
-            // Add your terms content here in the right column
             echo "<br>";
             echo "<ul>";
             foreach ($term_lines as $term) {
@@ -82,10 +77,6 @@
             echo "<li> Diamond Bay does not accept any damaged or defaced movie vouchers and no compensation, replacement or refund will be given. </li>";
             echo "<li> Diamond Bay reserves the right to add, delete and/or vary any of these terms and conditions, at any time, at its absolute discretion.</li>";
             echo "<li> In the event of dispute, Diamond Bay’s decision shall be final, conclusive and binding.</li>";
-
-
-
-
             echo "</ul>";
             echo '</div>';
             echo '</div>';

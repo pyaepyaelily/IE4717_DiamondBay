@@ -19,20 +19,9 @@
         </div>
     </div>
     <div class="div_body">
-        <!-- <div>
-            <ul class="breadcrumb">
-                <li><a href="homepage.php">Home</a></li>
-                <li><a href="#">Movie Details</a></li>
-                <li><a href="#">Seat Selection</a></li>
-                <li>Online Deals</li>
-            </ul>
-        </div> -->
-
         <?php
-        // session_start();
-        include('db_connection.php');
 
-        // Include the save_data.php script for processing the form submission
+        include('db_connection.php');
         include('save_data.php');
         
         $show_time_id = $_GET['showTimeID'];
@@ -56,7 +45,6 @@
         $_SESSION['selectedSeatPriceArray'] = $selectedSeatPriceArray;
         $_SESSION['selectedSeatIDArray'] = $selectedSeatIDArray;
 
-        // Query the database to select the data from the 'online_deals' table.
         $query = "SELECT id, name, price, description, image FROM online_deals";
         $result = mysqli_query($connection, $query);
 
@@ -124,9 +112,9 @@
 
             // Clear the cart session
             <?php
-            session_start(); // Start the session (if not already started)
+            session_start();
             if (isset($_SESSION['cart'])) {
-                unset($_SESSION['cart']); // Unset or remove the cart session
+                unset($_SESSION['cart']);
             }
             ?>
         });

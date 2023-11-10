@@ -28,11 +28,7 @@
         </div>
 
         <?php
-        // Include your database connection code
         include('db_connection.php');
-
-
-        // Query the database to select the data from the 'gifts' table.
         $query = "SELECT * FROM gifts WHERE type = 'gift' ";
         $result = mysqli_query($connection, $query);
 
@@ -59,10 +55,8 @@
 
 
         echo '<br>';
-        // Query the database to select the data from the 'corporate' table.
-        // $query1 = "SELECT * FROM corporate";
         $query1 = "SELECT * FROM gifts WHERE type = 'corporate' ";
-        $result1 = mysqli_query($connection, $query1); // Use $result1 for the second query
+        $result1 = mysqli_query($connection, $query1);
 
         if (!$result1) {
             die("Query failed: " . mysqli_error($connection));
@@ -85,7 +79,6 @@
         }
         mysqli_data_seek($result1, 0);
 
-        // Fetch the "Voucher Type" data using a new array
         $voucherTypes = array();
         while ($row1 = mysqli_fetch_assoc($result1)) {
             $voucherTypes[] = $row1['name'];
@@ -183,14 +176,8 @@
 
         echo '<br>';
 
-        // Close the database connection
         mysqli_close($connection);
         ?>
-
-        <!-- <div id="popup" style="display: none;">
-            <p id="popup-message" style="color: black;">Thank you for your submission! Your enquiry has been sent successfully.</p>
-            <button id="close-popup">Close</button>
-        </div> -->
 
         <div id="popup" style="display: none;">
             <p id="popup-message" style="color: black;"></p>
@@ -200,124 +187,6 @@
 
 
     </div>
-
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const successParam = new URLSearchParams(window.location.search).get('success');
-            const popup = document.getElementById('popup');
-            const closePopup = document.getElementById('close-popup');
-            const form = document.getElementById('enquiryForm');
-
-            if (successParam === '1') {
-                // Display the popup if the success query parameter is present
-                popup.style.display = 'block';
-                form.reset();
-            }
-
-            closePopup.addEventListener('click', function() {
-                // Close the popup when the close button is clicked
-                popup.style.display = 'none';
-            });
-        });
-    </script> -->
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const successParam = new URLSearchParams(window.location.search).get('success');
-            const errorParam = new URLSearchParams(window.location.search).get('error');
-            const popup = document.getElementById('popup');
-            const closePopup = document.getElementById('close-popup');
-            const form = document.getElementById('enquiryForm');
-            const popupMessage = document.getElementById('popup-message');
-
-            if (successParam === '1') {
-                // Display the success message if the success query parameter is present
-                popupMessage.textContent = 'Thank you for your submission! Your enquiry has been sent successfully.';
-                popup.style.display = 'block';
-                form.reset();
-            } else if (errorParam === '1') {
-                // Display the error message if the error query parameter is present
-                popupMessage.textContent = 'Sorry, there was an error processing your enquiry. Please check your inputs and try again.';
-                popup.style.display = 'block';
-            }
-
-            closePopup.addEventListener('click', function() {
-                // Close the popup when the close button is clicked
-                popup.style.display = 'none';
-            });
-        });
-    </script> -->
-
-    <!-- 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const successParam = new URLSearchParams(window.location.search).get('success');
-            const errorParam = new URLSearchParams(window.location.search).get('error');
-            const popup = document.getElementById('popup');
-            const closePopup = document.getElementById('close-popup');
-            const form = document.getElementById('enquiryForm');
-            const popupMessage = document.getElementById('popup-message');
-
-            form.addEventListener("submit", function(event) {
-                // Validate the name field
-                const nameInput = document.getElementById("name");
-                const nameValue = nameInput.value;
-                const namePattern = /^[A-Za-z\s]+$/;
-
-                if (!namePattern.test(nameValue)) {
-                    alert("Invalid name format. Please use only alphabet characters and spaces.");
-                    event.preventDefault();
-                }
-
-                // Validate the email field
-                const emailInput = document.getElementById("email");
-                const emailValue = emailInput.value;
-                const emailPattern = /^\w+([\.-]?\w+)*@(\w+(\.\w{2,3}){1,3})$/;
-
-                if (!emailPattern.test(emailValue)) {
-                    alert("Invalid email address. Please enter a valid email address with a maximum of three domain parts, each having a valid top-level domain (e.g., example.com). Ensure that there are no extra dots (.) or invalid characters in the address.");
-                    event.preventDefault();
-                }
-
-                //Validate the contact number field
-                const phoneInput = document.getElementById("contactNumber");
-                const phoneValue = phoneInput.value;
-                const phonePattern = /[0-9]{8}/;
-                if (!phonePattern.test(phoneValue)) {
-                    alert("Invalid phone number. Please enter a valid 8-digit phone number without spaces, dashes, or special characters.");
-                    event.preventDefault();
-                }
-
-                const postalCodeInput = document.getElementById("postalCode");
-                const postalCodePattern = /^[0-9]{6}$/;
-
-                postalCodeInput.addEventListener("blur", function() {
-                    if (!postalCodePattern.test(postalCodeInput.value)) {
-                        alert("Invalid postal code. Please enter a valid 6-digit postal code.");
-                    }
-                });
-
-
-            });
-
-
-            if (successParam === '1') {
-                // Display the success message if the success query parameter is present
-                popupMessage.textContent = 'Thank you for your submission! Your enquiry has been sent successfully.';
-                popup.style.display = 'block';
-                form.reset();
-            } else if (errorParam === '1') {
-                // Display the error message if the error query parameter is present
-                popupMessage.textContent = 'Sorry, there was an error processing your enquiry. Please check your inputs and try again.';
-                popup.style.display = 'block';
-            }
-
-            closePopup.addEventListener('click', function() {
-                // Close the popup when the close button is clicked
-                popup.style.display = 'none';
-            });
-        });
-    </script> -->
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -395,8 +264,6 @@
             });
         });
     </script>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

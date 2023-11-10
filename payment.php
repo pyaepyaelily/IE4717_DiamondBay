@@ -6,8 +6,6 @@
     <title>Online Deals</title>
     <link rel="stylesheet" href="asset\style\payment.css">
     <link rel="stylesheet" href="asset\style\navbar_footer.css">
-    <!-- <script src="asset\js\card_validation.js"></script> -->
-
 </head>
 
 <body>
@@ -22,14 +20,8 @@
         </div>
     </div>
     <div class="div_body">
-
-
         <?php
-
-        // session_start();
         include('db_connection.php');
-
-        // Include the save_data.php script for processing the form submission
         include('save_data.php');
 
         $movieId =  $_SESSION['movieId'];
@@ -43,10 +35,6 @@
         $showDate = $_SESSION['showDate'];
         $showTime =  $_SESSION['showTime'];
         $hallId =  $_SESSION['hallId'];
-        // $selectedSeat = $_SESSION['selectedSeat'];
-        // $selectedSeatsData = $_SESSION['selectedSeatsData'];
-
-
 
         $selectedSeatArray =  $_SESSION['selectedSeatArray'];
         $selectedSeatTypeArray = $_SESSION['selectedSeatTypeArray'];
@@ -109,10 +97,10 @@
                 $selectedSeatPrice = $selectedSeatPriceArray[$i];
 
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>' . $selectedSeat . '</td>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '<td>$' . $selectedSeatPrice . '</td>';
                 echo '</tr>';
 
@@ -126,7 +114,7 @@
             echo ' </tr> ';
             foreach ($cart as $item) {
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>
                             <p>' . $item['name'] . '</p>
                         </td>';
@@ -144,7 +132,7 @@
             echo ' <td>Payment</td>';
             echo ' <td></td>';
             echo ' <td></td>';
-            echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+            echo '<td></td>';
             echo '<td><b>$' . number_format($totalPrice, 2) . '</b></td>';
 
             echo ' </tr>';
@@ -188,10 +176,10 @@
                 $selectedSeatPrice = $selectedSeatPriceArray[$i];
 
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>' . $selectedSeat . '</td>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '<td>$' . $selectedSeatPrice . '</td>';
                 echo '</tr>';
 
@@ -205,7 +193,7 @@
             echo ' </tr> ';
             foreach ($cart as $item) {
                 echo '<tr>';
-                echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+                echo '<td></td>';
                 echo '<td>
                             <p>' . $item['name'] . '</p>
                         </td>';
@@ -223,7 +211,7 @@
             echo ' <td>Payment</td>';
             echo ' <td></td>';
             echo ' <td></td>';
-            echo '<td></td>'; // An empty cell for alignment with "Online Deals"
+            echo '<td></td>';
             echo '<td><b>$' . number_format($totalPrice, 2) . '</b></td>';
 
             echo ' </tr>';
@@ -237,8 +225,6 @@
     </div>';
 
         echo ' <br>';
-
-        // Close the database connection
         mysqli_close($connection);
         ?>
 
@@ -310,24 +296,6 @@
                             document.getElementById("error-card-number").style.display = "none";
                         }
 
-                        // // Expiry Month validation
-                        // const expiryMonth = document.getElementById("expiryMonth").value;
-                        // if (!/^(0[1-9]|1[0-2])$/.test(expiryMonth)) {
-                        //     document.getElementById("error-expiry-month").style.display = "block";
-                        //     isValid = false;
-                        // } else {
-                        //     document.getElementById("error-expiry-month").style.display = "none";
-                        // }
-
-                        // // Expiry Year validation
-                        // const expiryYear = document.getElementById("expiryYear").value;
-                        // if (!/^\d{2}$/.test(expiryYear)) {
-                        //     document.getElementById("error-expiry-year").style.display = "block";
-                        //     isValid = false;
-                        // } else {
-                        //     document.getElementById("error-expiry-year").style.display = "none";
-                        // }
-
                         // Expiry Month and Year validation
                         const expiryMonth = document.getElementById("expiryMonth").value;
                         const expiryYear = document.getElementById("expiryYear").value;
@@ -385,11 +353,10 @@
                         return isValid;
                     }
 
-                    // Add form submission event listener
                     const submitButton = document.getElementById("submitButton");
                     submitButton.addEventListener("click", function(e) {
                         if (!validateForm()) {
-                            e.preventDefault(); // Prevent form submission if validation fails
+                            e.preventDefault();
                         }
                     });
                 </script>
@@ -410,9 +377,4 @@
         </footer>
 
 </body>
-
-
-
-
-
 </html>
