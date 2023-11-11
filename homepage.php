@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="asset\style\movies.css">
 </head>
+
 <body>
     <div class="navbar">
         <div class="navbar-logo">
-            <img src="asset\img\logo.png" alt="Logo">
+            <a href="homepage.php">
+                <img src="asset\img\logo.png" alt="Logo">
+            </a>
         </div>
         <div class="navbar-links">
             <a href="homepage.php">Home</a>
@@ -19,8 +23,8 @@
 
 
     <div class="div-body">
-        
-    <?php
+
+        <?php
         // Include your database connection code
         include('db_connection.php');
 
@@ -32,10 +36,10 @@
         if (!$result) {
             die("Query failed: " . mysqli_error($connection));
         }
-    
+
         echo '<h2 class="title-header">Now Showing</h2>';
         echo '<br>';
-        
+
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="custom-right-shift">';
             echo '<div class="card" style=“height: 50%”/>';
@@ -53,15 +57,15 @@
             echo '</div>';
             echo '</div>';
         }
-        
+
         echo '</div>';
-    ?>
+        ?>
     </div>
 
-    
+
 
     <div class="div-body">
-    <?php
+        <?php
         // Include your database connection code
         include('db_connection.php');
 
@@ -73,7 +77,7 @@
         if (!$result) {
             die("Query failed: " . mysqli_error($connection));
         }
-    
+
         echo '<br>';
         echo '<br>';
         echo '<h2 class="title-header">Advance Sales</h2>';
@@ -98,10 +102,10 @@
             echo '</div>';
             echo '</div>';
         }
-       
+
         echo '</div>';
         echo '<br>';
-    ?> 
+        ?>
     </div>
 
 
@@ -119,4 +123,5 @@
 
 
 </body>
+
 </html>

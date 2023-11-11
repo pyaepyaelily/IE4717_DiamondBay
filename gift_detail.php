@@ -11,7 +11,9 @@
 <body>
     <div class="navbar">
         <div class="navbar-logo">
-            <img src="asset/img/logo.png" alt="Logo">
+            <a href="homepage.php">
+                <img src="asset\img\logo.png" alt="Logo">
+            </a>
         </div>
         <div class="navbar-links">
             <a href="homepage.php">Home</a>
@@ -84,8 +86,6 @@
             echo '<div class="button-container">';
             echo '<a href="gift.php" class="button-link"><button type="button" id="backButton">Go Back</button></a>';
             echo '</div>';
-            
-            
         } else {
             echo "Item not found";
         }

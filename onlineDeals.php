@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Deals</title>
@@ -10,7 +11,9 @@
 <body>
     <div class="navbar">
         <div class="navbar-logo">
-            <img src="asset\img\logo.png" alt="Logo">
+            <a href="homepage.php">
+                <img src="asset\img\logo.png" alt="Logo">
+            </a>
         </div>
         <div class="navbar-links">
             <a href="#">Home</a>
@@ -23,7 +26,7 @@
 
         include('db_connection.php');
         include('save_data.php');
-        
+
         $show_time_id = $_GET['showTimeID'];
         $showDate = $_GET['showDate'];
         $showTime = $_GET['showTime'];
