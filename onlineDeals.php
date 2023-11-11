@@ -94,14 +94,15 @@
         }
         echo '</div>';
 
+        mysqli_close($connection);
+
         echo '<div class="button-container">';
-        echo '<button type="button" id="go-back-button">Go back to seat selection</button>';
+        echo '<button type="button" id="go-back-button" onclick="goBack()">Go back to seat selection</button>';
         echo '<button type="submit" name="submit">Next</button>';
         echo '</div>';
         echo '</form>';
 
-        // Close the database connection
-        mysqli_close($connection);
+
         ?>
     </div>
 
@@ -122,7 +123,11 @@
             ?>
         });
     </script>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <footer>
         <div class="footer-row">
